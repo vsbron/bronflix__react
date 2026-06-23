@@ -232,7 +232,7 @@ export type MediaTypeAndId = {
 export type FormWrapProps = {
   children: ReactNode;
   title: string;
-  submit: (data: Record<string, any>) => void;
+  submit: (e?: React.BaseSyntheticEvent) => Promise<void> | void;
   isSubmitting: boolean;
   error: string | null;
   buttonText: string;
