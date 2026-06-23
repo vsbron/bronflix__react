@@ -61,7 +61,10 @@ function ChangePasswordForm() {
       closeModal();
     } catch (e: unknown) {
       console.error(e);
-      setFormError("Couldn't change password due to unknown error");
+      let message = "Couldn't change password due to an unknown error";
+      
+      if (e instanceof Error && e.message.includes("auth/invalid-credential")) {message = "Your current password is incorrect"}
+      setFormError(message);
     } finally {
       // Disabling submitting state
       setIsSubmitting(false);
