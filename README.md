@@ -160,6 +160,13 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 
 ---
 
+## Future updates
+
+- **Favorites/Watch list**: Change to store the ID instead of the object
+- **AI Chat**: Implement a small chat with the support of AI to recommend movies it. Place restrictions to questions!
+
+---
+
 ## License
 
 ©2026 BroN
