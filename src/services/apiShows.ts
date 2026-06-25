@@ -8,7 +8,7 @@ export async function getShows(type: APIFetchType): Promise<IShowList[]> {
     const response = await fetch(
       `${MEDIA_URL}tv/${type}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&page=1&include_adult=false`
+      }&page=1&include_adult=false`,
     );
 
     // Guard clause
@@ -31,11 +31,11 @@ export async function getShows(type: APIFetchType): Promise<IShowList[]> {
 }
 
 // API for getting specific show
-export async function getShow(showId: string): Promise<IShow> {
+export async function getShow(showId: number): Promise<IShow> {
   try {
     // Fetching the data
     const response = await fetch(
-      `${MEDIA_URL}tv/${showId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
+      `${MEDIA_URL}tv/${showId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`,
     );
 
     // Guard clause
@@ -57,20 +57,20 @@ export async function getShow(showId: string): Promise<IShow> {
 // API for getting show's specific season
 export async function getSeason(
   showId: string,
-  seasonNumber: string
+  seasonNumber: string,
 ): Promise<ISeason> {
   try {
     // Fetching the data
     const response = await fetch(
       `${MEDIA_URL}tv/${showId}/season/${seasonNumber}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }`
+      }`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the season data: ${response.statusText}`
+        `Failed to fetch the season data: ${response.statusText}`,
       );
     }
 

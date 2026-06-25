@@ -3,23 +3,32 @@ import { Link } from "react-router-dom";
 import { MediaListProps } from "@/lib/types";
 
 import PreviewImage from "@/components/previews/PreviewImage";
+import { useWatchListMovies } from "./useWatchListMovies";
+import { useWatchListShows } from "./useWatchListShows";
 
 function MediaList({ items, type }: MediaListProps) {
-  let title;
-  switch (type) {
-    case "movie":
-    case "movies":
-      title = "Movies";
-      break;
-    case "tv":
-    case "shows":
-      title = "Shows";
-      break;
-    case "person":
-      title = "People";
-  }
+  // Checking the type of content we got
+  const isMovie = type === "movie" || type === "movies";
 
-  // Guard clause
+  // Calling both hooks - inactive one gets an empty array
+  const {
+    movies,
+    isLoading: moviesLoading,
+    error: moviesError,
+  } = useWatchListMovies(isMovie ? items : []);
+  const {
+    shows,
+    isLoading: showsLoading,
+    error: showsError,
+  } = useWatchListShows(!isMovie ? items : []);
+
+  // Getting the constants that relevant to the content type
+  const title = isMovie ? "Movies" : "Shows";
+  const mediaList = isMovie ? movies : shows;
+  const isLoading = isMovie ? moviesLoading : showsLoading;
+  const error = isMovie ? moviesError : showsError;
+
+  // Guard clauses
   if (items.length === 0)
     return (
       <p>
@@ -27,18 +36,21 @@ function MediaList({ items, type }: MediaListProps) {
         <Link to={`/${type}/`}>{type}</Link> section and start to fill it
       </p>
     );
+  if (isLoading) return <p>Loading {title.toLowerCase()}...</p>;
+  if (error)
+    return <p>Something went wrong loading your {title.toLowerCase()}.</p>;
 
   // Returned JSX
   return (
     <>
       <div className="flex gap-2 md:gap-4 flex-wrap">
-        {items.map((item) => (
+        {mediaList.map((media) => (
           <Link
-            to={`/${type}/${item.id}`}
+            to={`/${type}/${media.id}`}
             className="basis-[10rem] md:basis-[11rem] xl:basis-[14rem] h-[15rem] md:h-[17rem] xl:h-[21rem]"
-            key={item.id}
+            key={media.id}
           >
-            <PreviewImage media={item} type={type} hud={false} />
+            <PreviewImage media={media} type={type} hud={false} />
           </Link>
         ))}
       </div>

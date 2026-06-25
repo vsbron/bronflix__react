@@ -83,8 +83,8 @@ export function getMediaImages<T extends IBase>(media: T, type?: string) {
         ? `${MEDIA_IMG_URL}w300${media.poster_path}`
         : NO_MOVIE_POSTER
       : media.profile_path
-      ? `${MEDIA_IMG_URL}w300${media.profile_path}`
-      : NO_PERSON_PHOTO;
+        ? `${MEDIA_IMG_URL}w300${media.profile_path}`
+        : NO_PERSON_PHOTO;
 
   const backgroundImage =
     type !== "person"
@@ -141,13 +141,13 @@ export function getSearchMediaData(media: ISearchedMediaSmall) {
 // Helper function to set the correct image
 export function getMediaImagesSearch(
   path: string | undefined,
-  defaultImage: string
+  defaultImage: string,
 ): string {
   return path ? `${MEDIA_IMG_URL}w300${path}` : defaultImage;
 }
 
 //
-export const getUserListsInfo = ({ type, id }: MediaTypeAndId) => {
+export const getUserListsInfo = ({ type, id: mediaId }: MediaTypeAndId) => {
   // Getting all the relevant lists from user store
   const {
     likedMovies,
@@ -159,22 +159,24 @@ export const getUserListsInfo = ({ type, id }: MediaTypeAndId) => {
     ratedShows,
   } = useUser();
 
+  // TODO
+
   // Checking whether media is liked or is in watch list
   let isLiked, isInWatchList, isRated;
   switch (type) {
     case "movie":
     case "movies":
-      isLiked = likedMovies.some((movie) => movie.id === id);
-      isInWatchList = watchlistMovies.some((movie) => movie.id === id);
-      isRated = ratedMovies.find((movie) => movie.id === id);
+      isLiked = likedMovies.some((id) => id === mediaId);
+      isInWatchList = watchlistMovies.some((id) => id === mediaId);
+      // isRated = ratedMovies.find((id) => id === mediaId);
       break;
     case "tv":
-      isLiked = likedShows.some((show) => show.id === id);
-      isInWatchList = watchlistShows.some((show) => show.id === id);
-      isRated = ratedShows.find((show) => show.id === id);
+      isLiked = likedShows.some((id) => id === mediaId);
+      isInWatchList = watchlistShows.some((id) => id === mediaId);
+      // isRated = ratedShows.find((id) => id === mediaId);
       break;
     case "person":
-      isLiked = likedPeople.some((person) => person.id === id);
+      isLiked = likedPeople.some((id) => id === mediaId);
       break;
     default:
       isLiked = false;

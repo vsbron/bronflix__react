@@ -35,8 +35,8 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
   }
 
   // Checking if media already in any lists
-  const isLiked = likedList.some((m) => m.id === media.id);
-  const isInWatchList = watchList.some((m) => m.id === media.id);
+  const isLiked = likedList.some((id) => id === media.id);
+  const isInWatchList = watchList.some((id) => id === media.id);
 
   // Getting the navigate and dispatch functions
   const dispatch = useDispatch<AppDispatch>();
@@ -64,24 +64,25 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
         : [];
 
       // Checking whether we need to add or remove movie from the list
-      const updatedList = currentLikedList.some((m) => m.id === media.id)
-        ? currentLikedList.filter((m) => m.id !== media.id)
-        : [
-            ...currentLikedList,
-            isMovie
-              ? {
-                  id: media.id,
-                  title: media.title,
-                  poster_path: media.poster_path,
-                  vote_average: media.vote_average,
-                }
-              : {
-                  id: media.id,
-                  name: media.name,
-                  poster_path: media.poster_path,
-                  vote_average: media.vote_average,
-                },
-          ];
+      const updatedList = currentLikedList.some((id) => id === media.id)
+        ? currentLikedList.filter((id) => id !== media.id)
+        : [...currentLikedList, media.id];
+      // [
+      //   ...currentLikedList,
+      //   isMovie
+      //     ? {
+      //         id: media.id,
+      //         title: media.title,
+      //         poster_path: media.poster_path,
+      //         vote_average: media.vote_average,
+      //       }
+      //     : {
+      //         id: media.id,
+      //         name: media.name,
+      //         poster_path: media.poster_path,
+      //         vote_average: media.vote_average,
+      //       },
+      // ];
 
       // Update the liked movies list in the state and firebase
       dispatch(
@@ -89,12 +90,12 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
           updatedData: {
             [isMovie ? "likedMovies" : "likedShows"]: updatedList,
           },
-        })
+        }),
       );
     } catch (e: unknown) {
       console.error(e);
       throw new Error(
-        `Couldn't update the Favorite ${type} list due to unknown error`
+        `Couldn't update the Favorite ${type} list due to unknown error`,
       );
     }
   };
@@ -120,24 +121,9 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
         : [];
 
       // Checking whether we need to add or remove movie from the list
-      const updatedList = currentWatchList.some((m) => m.id === media.id)
-        ? currentWatchList.filter((m) => m.id !== media.id)
-        : [
-            ...currentWatchList,
-            isMovie
-              ? {
-                  id: media.id,
-                  title: media.title,
-                  poster_path: media.poster_path,
-                  vote_average: media.vote_average,
-                }
-              : {
-                  id: media.id,
-                  name: media.name,
-                  poster_path: media.poster_path,
-                  vote_average: media.vote_average,
-                },
-          ];
+      const updatedList = currentWatchList.some((id) => id === media.id)
+        ? currentWatchList.filter((id) => id !== media.id)
+        : [...currentWatchList, media.id];
 
       // Update the watchlist in the state and firebase
       dispatch(
@@ -145,12 +131,12 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
           updatedData: {
             [isMovie ? "watchlistMovies" : "watchlistShows"]: updatedList,
           },
-        })
+        }),
       );
     } catch (e: unknown) {
       console.error(e);
       throw new Error(
-        `Couldn't update the ${type} Watchlist due to unknown error`
+        `Couldn't update the ${type} Watchlist due to unknown error`,
       );
     }
   };

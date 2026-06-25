@@ -13,30 +13,30 @@ function FavoritesList() {
       <div className="flex flex-col gap-6">
         <div>
           <Heading as="h3">Favorite Movies</Heading>
-          <Previews
+          {/* <Previews
             rawPreviews={[...likedMovies].reverse()}
             width="20rem"
             height="30rem"
             type="movies"
-          />
+          /> */}
         </div>
         <div>
           <Heading as="h3">Favorite Shows</Heading>
-          <Previews
+          {/* <Previews
             rawPreviews={[...likedShows].reverse()}
             width="18rem"
             height="27rem"
             type="shows"
-          />
+          /> */}
         </div>
         <div>
           <Heading as="h3">Favorite Actors / Crew Members</Heading>
-          <Previews
+          {/* <Previews
             rawPreviews={[...likedPeople].reverse()}
             width="15rem"
             height="23rem"
             type="person"
-          />
+          /> */}
         </div>
       </div>
     </section>

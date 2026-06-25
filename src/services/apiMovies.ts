@@ -8,13 +8,13 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
     const response = await fetch(
       `${MEDIA_URL}movie/${type}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&page=1&include_adult=false`
+      }&page=1&include_adult=false`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the movies data: ${response.statusText}`
+        `Failed to fetch the movies data: ${response.statusText}`,
       );
     }
 
@@ -42,13 +42,13 @@ export async function getUpcomingMovies(): Promise<IMovieList[]> {
     const response = await fetch(
       `${MEDIA_URL}movie/upcoming?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&page=1&include_adult=false`
+      }&page=1&include_adult=false`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the upcoming movies data: ${response.statusText}`
+        `Failed to fetch the upcoming movies data: ${response.statusText}`,
       );
     }
 
@@ -60,7 +60,7 @@ export async function getUpcomingMovies(): Promise<IMovieList[]> {
 
     // Filter movies that are releasing after today
     const upcomingMovies = data.results.filter(
-      (movie: IMovie) => movie.release_date > today
+      (movie: IMovie) => movie.release_date > today,
     );
 
     // Return the movies
@@ -72,13 +72,13 @@ export async function getUpcomingMovies(): Promise<IMovieList[]> {
 }
 
 // API for getting specific movie
-export async function getMovie(movieId: string): Promise<IMovie> {
+export async function getMovie(movieId: number): Promise<IMovie> {
   try {
     // Fetching the data
     const response = await fetch(
       `${MEDIA_URL}movie/${movieId}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }`
+      }`,
     );
 
     // Guard clause
@@ -104,13 +104,13 @@ export async function getMoviesGenre(genreId: string): Promise<IMovieList[]> {
     const response = await fetch(
       `${MEDIA_URL}discover/movie?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&with_genres=${genreId}`
+      }&with_genres=${genreId}`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the movies with selected genre: ${response.statusText}`
+        `Failed to fetch the movies with selected genre: ${response.statusText}`,
       );
     }
 
