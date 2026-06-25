@@ -34,7 +34,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
   } = person;
 
   // Checking if person already in the favorites list
-  const isLiked = likedPeople.some((p) => p.id === person.id);
+  const isLiked = likedPeople.some((id) => id === person.id);
 
   // Setting the state for expanded biography text
   const [isBioExpanded, setIsBioExpanded] = useState<boolean>(false);
@@ -73,21 +73,14 @@ function PersonDetails({ person }: PersonDetailsProps) {
       // Checking whether we need to add or remove the person from the list
       const updatedList = currentLikedPeople.some((p) => p.id === person.id)
         ? currentLikedPeople.filter((p) => p.id !== person.id)
-        : [
-            ...currentLikedPeople,
-            {
-              id: person.id,
-              name: person.name,
-              profile_path: person.profile_path,
-            },
-          ];
+        : [...currentLikedPeople, person.id];
 
       // Update the liked people list in the state and firebase
       dispatch(updateUserData({ updatedData: { likedPeople: updatedList } }));
     } catch (e: unknown) {
       console.error(e);
       throw new Error(
-        "Couldn't update the Person Favorites list due to unknown error"
+        "Couldn't update the Person Favorites list due to unknown error",
       );
     }
   };
@@ -104,7 +97,9 @@ function PersonDetails({ person }: PersonDetailsProps) {
         />
         <div className="flex flex-col justify-end items-start">
           {uid && <MediaInList type="person" id={person.id} name={name} />}
-          <div className="text-[2.8rem] md:text-[3rem] lg:text-[4rem] font-heading -mt-2 mb-3 leading-[3rem] md:leading-[3.4rem] lg:leading-[4.5rem]">{name}</div>
+          <div className="text-[2.8rem] md:text-[3rem] lg:text-[4rem] font-heading -mt-2 mb-3 leading-[3rem] md:leading-[3.4rem] lg:leading-[4.5rem]">
+            {name}
+          </div>
           <div>Gender: {GENDERS[gender]}</div>
           <div>Known for: {known_for_department}</div>
           <div>Birthday: {formattedBirthday}</div>

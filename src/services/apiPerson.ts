@@ -8,13 +8,13 @@ export async function getTrendingActors(): Promise<IPersonList[]> {
     const response = await fetch(
       `${MEDIA_URL}person/popular?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&page=1`
+      }&page=1`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the actors data: ${response.statusText}`
+        `Failed to fetch the actors data: ${response.statusText}`,
       );
     }
 
@@ -33,13 +33,13 @@ export async function getTrendingActors(): Promise<IPersonList[]> {
 }
 
 // API for getting specific person
-export async function getPerson(movieId: string): Promise<IPerson> {
+export async function getPerson(movieId: number): Promise<IPerson> {
   try {
     // Fetching the data
     const response = await fetch(
       `${MEDIA_URL}person/${movieId}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }`
+      }`,
     );
 
     // Guard clause
@@ -73,7 +73,7 @@ export async function getPersonCredits(personId: number): Promise<{
   try {
     // Fetching data concurrently
     const [moviesResponse, showsResponse] = await Promise.all(
-      endpoints.map((url) => fetch(url))
+      endpoints.map((url) => fetch(url)),
     );
 
     // Guard clause

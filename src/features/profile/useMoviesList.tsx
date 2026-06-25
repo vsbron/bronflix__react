@@ -2,7 +2,7 @@ import { useQueries } from "@tanstack/react-query";
 import { getMovie } from "@/services/apiMovies";
 import { IMovie } from "@/lib/typesAPI";
 
-export function useWatchListMovies(ids: number[]) {
+export function useMoviesList(ids: number[]) {
   const { isLoading, movies, error } = useQueries({
     queries: ids.map((id) => ({
       queryKey: ["movie", id],

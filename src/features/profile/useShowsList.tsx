@@ -2,7 +2,7 @@ import { useQueries } from "@tanstack/react-query";
 import { getShow } from "@/services/apiShows";
 import { IShow } from "@/lib/typesAPI";
 
-export function useWatchListShows(ids: number[]) {
+export function useShowsList(ids: number[]) {
   const { isLoading, shows, error } = useQueries({
     queries: ids.map((id) => ({
       queryKey: ["show", id],

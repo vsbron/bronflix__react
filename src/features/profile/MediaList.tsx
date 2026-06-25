@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { MediaListProps } from "@/lib/types";
 
 import PreviewImage from "@/components/previews/PreviewImage";
-import { useWatchListMovies } from "./useWatchListMovies";
-import { useWatchListShows } from "./useWatchListShows";
+import { useMoviesList } from "@/features/profile/useMoviesList";
+import { useShowsList } from "@/features/profile/useShowsList";
 
 function MediaList({ items, type }: MediaListProps) {
   // Checking the type of content we got
@@ -15,12 +15,12 @@ function MediaList({ items, type }: MediaListProps) {
     movies,
     isLoading: moviesLoading,
     error: moviesError,
-  } = useWatchListMovies(isMovie ? items : []);
+  } = useMoviesList(isMovie ? items : []);
   const {
     shows,
     isLoading: showsLoading,
     error: showsError,
-  } = useWatchListShows(!isMovie ? items : []);
+  } = useShowsList(!isMovie ? items : []);
 
   // Getting the constants that relevant to the content type
   const title = isMovie ? "Movies" : "Shows";

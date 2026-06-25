@@ -8,8 +8,6 @@ function WatchList() {
   // Getting the user's watch lists from the Redux store
   const { watchlistMovies, watchlistShows } = useUser();
 
-  console.log(watchlistMovies, watchlistShows);
-
   // Returned JSX
   return (
     <section>
