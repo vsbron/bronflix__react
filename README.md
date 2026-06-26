@@ -162,8 +162,8 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 
 ## Future updates
 
-- **Favorites/Watch list**: Change to store the ID instead of the object (DONE. Edit the grading system to fit new structure)
 - **AI Chat**: Implement a small chat with the support of AI to recommend movies it. Place restrictions to questions!
+- **API Fetch**: Rewrite media fetching as API call for better caching.
 
 ---
 

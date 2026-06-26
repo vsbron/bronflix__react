@@ -17,7 +17,7 @@ export const personLoader = async ({
   params,
 }: LoaderFunctionArgs): Promise<IPerson> => {
   // Getting the person using API function
-  const person = await getPerson(params.personId!);
+  const person = await getPerson(Number(params.personId));
   // Return show
   return person;
 };

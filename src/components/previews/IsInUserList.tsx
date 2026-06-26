@@ -25,7 +25,7 @@ function IsInUserList({ type, id }: MediaTypeAndId) {
       {isRated && (
         <div className="bg-purple-800 rounded-xl px-1 pr-2 py-0 absolute left-2 md:left-3 top-10 md:top-12 flex items-center gap-0.5 text-[1rem] md:text-xl text-purple-200">
           <StarIcon className="w-5" />
-          {/* {isRated.rate} */}
+          {isRated.rate}
         </div>
       )}
     </>

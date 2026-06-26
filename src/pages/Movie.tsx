@@ -14,7 +14,7 @@ export const movieLoader = async ({
   params,
 }: LoaderFunctionArgs): Promise<IMovie> => {
   // Getting the movie using API function
-  const movie = await getMovie(params.movieId!);
+  const movie = await getMovie(Number(params.movieId));
 
   // Return movie
   return movie;
@@ -35,7 +35,7 @@ function Movie() {
       <Helmet>
         <title>
           {`${title} (${new Date(
-            release_date
+            release_date,
           ).getFullYear()}) - Movie${META_TITLE_END}`}
         </title>
         <meta

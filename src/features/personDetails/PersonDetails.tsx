@@ -71,8 +71,8 @@ function PersonDetails({ person }: PersonDetailsProps) {
         : [];
 
       // Checking whether we need to add or remove the person from the list
-      const updatedList = currentLikedPeople.some((p) => p.id === person.id)
-        ? currentLikedPeople.filter((p) => p.id !== person.id)
+      const updatedList = currentLikedPeople.some((id) => id === person.id)
+        ? currentLikedPeople.filter((id) => id !== person.id)
         : [...currentLikedPeople, person.id];
 
       // Update the liked people list in the state and firebase

@@ -15,7 +15,7 @@ export const showLoader = async ({
   params,
 }: LoaderFunctionArgs): Promise<IShow> => {
   // Getting the show using API function
-  const show = await getShow(params.showId!);
+  const show = await getShow(Number(params.showId));
   // Return show
   return show;
 };
@@ -34,7 +34,7 @@ function Show() {
       <Helmet>
         <title>
           {`${name} (${new Date(
-            first_air_date
+            first_air_date,
           ).getFullYear()}) - Show${META_TITLE_END}`}
         </title>
         <meta

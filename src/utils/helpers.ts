@@ -159,8 +159,6 @@ export const getUserListsInfo = ({ type, id: mediaId }: MediaTypeAndId) => {
     ratedShows,
   } = useUser();
 
-  // TODO
-
   // Checking whether media is liked or is in watch list
   let isLiked, isInWatchList, isRated;
   switch (type) {
@@ -168,12 +166,12 @@ export const getUserListsInfo = ({ type, id: mediaId }: MediaTypeAndId) => {
     case "movies":
       isLiked = likedMovies.some((id) => id === mediaId);
       isInWatchList = watchlistMovies.some((id) => id === mediaId);
-      // isRated = ratedMovies.find((id) => id === mediaId);
+      isRated = ratedMovies.find((m) => m.id === mediaId);
       break;
     case "tv":
       isLiked = likedShows.some((id) => id === mediaId);
       isInWatchList = watchlistShows.some((id) => id === mediaId);
-      // isRated = ratedShows.find((id) => id === mediaId);
+      isRated = ratedShows.find((s) => s.id === mediaId);
       break;
     case "person":
       isLiked = likedPeople.some((id) => id === mediaId);
