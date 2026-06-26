@@ -8,7 +8,7 @@ function FooterCopyright() {
       Built by VSBroN as a portfolio project.
       <br />
       This project is available on{" "}
-      <a href="https://github.com/vsbron/bronflix-2024-react" target="_blank">
+      <a href="https://github.com/vsbron/bronflix__react" target="_blank">
         GitHub
       </a>
       .

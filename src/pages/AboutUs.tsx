@@ -89,10 +89,7 @@ function AboutUs() {
           <p>
             {SITE_NAME} is hosted on GitHub and is available for everyone to
             explore. Feel free to{" "}
-            <a
-              href="https://github.com/vsbron/bronflix-2024-react"
-              target="_blank"
-            >
+            <a href="https://github.com/vsbron/bronflix__react" target="_blank">
               visit
             </a>{" "}
             the repository and check out the code!
