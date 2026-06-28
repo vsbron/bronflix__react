@@ -30,6 +30,7 @@ const ShowsByGenre = lazy(() => import("@/pages/ShowsByGenre"));
 const Show = lazy(() => import("@/pages/Show"));
 const SearchResults = lazy(() => import("@/pages/SearchResults"));
 const Profile = lazy(() => import("@/pages/Profile"));
+const AIMode = lazy(() => import("@/pages/AIMode"));
 const ProtectedRoute = lazy(() => import("@/pages/ProtectedRoute"));
 
 const AboutUs = lazy(() => import("@/pages/AboutUs"));
@@ -92,6 +93,7 @@ const router = createBrowserRouter([
       { path: "/movies/genre/:genreId", element: <MoviesByGenre /> },
       { path: "/shows", element: <ShowsMain /> },
       { path: "/shows/genre/:genreId", element: <ShowsByGenre /> },
+      { path: "/ai-mode", element: <AIMode /> },
       { path: "/search", element: <SearchResults /> },
       { path: "/site-map", element: <Sitemap /> },
       { path: "/about-us", element: <AboutUs /> },
