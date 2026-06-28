@@ -19,10 +19,12 @@ function AIMode() {
       </Helmet>
 
       {/* CONTENT */}
-      <section>
+      <section className="h-[100%] flex flex-col">
         <Heading>AI Mode</Heading>
-        <AIChat />
-        <AIChatInput />
+        <div className="flex flex-col gap-8 h-[100%]">
+          <AIChat />
+          <AIChatInput />
+        </div>
       </section>
     </>
   );
