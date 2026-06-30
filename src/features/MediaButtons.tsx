@@ -43,9 +43,14 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
 
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
+    // Guard clause - check that user is still authenticated
+    if (!auth.currentUser) {
+      console.error("No authenticated user found");
+      return;
+    }
     try {
       // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userRef = doc(db, "users", auth.currentUser.uid);
       const userSnap = await getDoc(userRef);
 
       // Guard clause
@@ -67,22 +72,6 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
       const updatedList = currentLikedList.some((id) => id === media.id)
         ? currentLikedList.filter((id) => id !== media.id)
         : [...currentLikedList, media.id];
-      // [
-      //   ...currentLikedList,
-      //   isMovie
-      //     ? {
-      //         id: media.id,
-      //         title: media.title,
-      //         poster_path: media.poster_path,
-      //         vote_average: media.vote_average,
-      //       }
-      //     : {
-      //         id: media.id,
-      //         name: media.name,
-      //         poster_path: media.poster_path,
-      //         vote_average: media.vote_average,
-      //       },
-      // ];
 
       // Update the liked movies list in the state and firebase
       dispatch(
@@ -100,9 +89,14 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
     }
   };
   const addToWatchListHandler = async () => {
+    // Guard clause - check that user is still authenticated
+    if (!auth.currentUser) {
+      console.error("No authenticated user found");
+      return;
+    }
     try {
       // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userRef = doc(db, "users", auth.currentUser.uid);
       const userSnap = await getDoc(userRef);
 
       // Guard clause

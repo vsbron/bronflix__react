@@ -25,14 +25,19 @@ export const fetchUserData = createAsyncThunk<DocumentData | null, string>(
       console.error(error);
       return rejectWithValue("An error occurred while fetching user data");
     }
-  }
+  },
 );
 
 export const updateUserData = createAsyncThunk<
   DocumentData | null,
   { updatedData: Partial<IUserState> }
 >("user/updateUserData", async ({ updatedData }, { rejectWithValue }) => {
-  const uid = auth!.currentUser!.uid;
+  // Guard clause - check that user is still authenticated
+  if (!auth.currentUser) return rejectWithValue("No authenticated user found");
+
+  // Get the UID
+  const uid = auth.currentUser.uid;
+
   try {
     // Guard clause
     if (!uid) return rejectWithValue("No user ID provided");
