@@ -41,8 +41,8 @@ function Search() {
       const res = await fetch(
         `${MEDIA_URL}search/multi?api_key=${
           import.meta.env.VITE_TMDB_API_KEY
-        }&query=${inputText}`,
-        { signal }
+        }&query=${encodeURIComponent(inputText)}`,
+        { signal },
       );
 
       // Guard clause
@@ -120,7 +120,12 @@ function Search() {
         disabled={isSubmitting}
         aria-label="Search"
       >
-        <MagnifyingGlassIcon style={{filter:"drop-shadow(0 0 2px black) drop-shadow(0 0 4px black) drop-shadow(0 0 6px black) drop-shadow(0 0 8px black)"}} />
+        <MagnifyingGlassIcon
+          style={{
+            filter:
+              "drop-shadow(0 0 2px black) drop-shadow(0 0 4px black) drop-shadow(0 0 6px black) drop-shadow(0 0 8px black)",
+          }}
+        />
       </button>
       <input
         type="text"

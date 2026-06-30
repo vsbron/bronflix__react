@@ -4,20 +4,20 @@ import { ISearchResults } from "@/lib/typesAPI";
 // API for getting search results
 export async function getSearchResults(
   query: string,
-  page: number
+  page: number,
 ): Promise<ISearchResults> {
   try {
     // Fetching the data
     const response = await fetch(
       `${MEDIA_URL}search/multi?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&query=${query}&page=${page}`
+      }&query=${encodeURIComponent(query)}&page=${page}`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the search results data: ${response.statusText}`
+        `Failed to fetch the search results data: ${response.statusText}`,
       );
     }
 
