@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { doc, getDoc } from "@firebase/firestore";
+import { arrayUnion, arrayRemove, doc } from "@firebase/firestore";
 import { EyeIcon, HeartIcon } from "@heroicons/react/24/solid";
 
 import { ModalProvider } from "@/context/ModalContext";
@@ -43,41 +43,21 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
 
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
-    // Guard clause - check that user is still authenticated
+    // Check if user still authenticated
     if (!auth.currentUser) {
       console.error("No authenticated user found");
       return;
     }
+
     try {
-      // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth.currentUser.uid);
-      const userSnap = await getDoc(userRef);
+      // Check if we have movie or show data
+      const field = isMovie ? "likedMovies" : "likedShows";
 
-      // Guard clause
-      if (!userSnap.exists()) return;
-
-      // Extracting the actual data
-      const currentData = userSnap.data();
-
-      // Setting the current watch lists to work with
-      const updatedFavoritesList = isMovie
-        ? currentData.likedMovies
-        : currentData.likedShows;
-
-      const currentLikedList = Array.isArray(updatedFavoritesList)
-        ? updatedFavoritesList
-        : [];
-
-      // Checking whether we need to add or remove movie from the list
-      const updatedList = currentLikedList.some((id) => id === media.id)
-        ? currentLikedList.filter((id) => id !== media.id)
-        : [...currentLikedList, media.id];
-
-      // Update the liked movies list in the state and firebase
+      // Update the user with new favorite item
       dispatch(
         updateUserData({
           updatedData: {
-            [isMovie ? "likedMovies" : "likedShows"]: updatedList,
+            [field]: isLiked ? arrayRemove(media.id) : arrayUnion(media.id),
           },
         }),
       );
@@ -88,42 +68,25 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
       );
     }
   };
+
   const addToWatchListHandler = async () => {
-    // Guard clause - check that user is still authenticated
+    // Check if user still authenticated
     if (!auth.currentUser) {
       console.error("No authenticated user found");
       return;
     }
+
     try {
-      // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth.currentUser.uid);
-      const userSnap = await getDoc(userRef);
+      // Check if we have movie or show data
+      const field = isMovie ? "watchlistMovies" : "watchlistShows";
 
-      // Guard clause
-      if (!userSnap.exists()) return;
-
-      // Extracting the actual data
-      const currentData = userSnap.data();
-
-      // Setting the current watch lists to work with
-      const updatedWatchList = isMovie
-        ? currentData.watchlistMovies
-        : currentData.watchlistShows;
-
-      const currentWatchList = Array.isArray(updatedWatchList)
-        ? updatedWatchList
-        : [];
-
-      // Checking whether we need to add or remove movie from the list
-      const updatedList = currentWatchList.some((id) => id === media.id)
-        ? currentWatchList.filter((id) => id !== media.id)
-        : [...currentWatchList, media.id];
-
-      // Update the watchlist in the state and firebase
+      // Update the user with new watch item
       dispatch(
         updateUserData({
           updatedData: {
-            [isMovie ? "watchlistMovies" : "watchlistShows"]: updatedList,
+            [field]: isInWatchList
+              ? arrayRemove(media.id)
+              : arrayUnion(media.id),
           },
         }),
       );
