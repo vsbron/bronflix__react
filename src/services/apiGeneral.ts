@@ -1,4 +1,3 @@
-import { MEDIA_URL } from "@/lib/constants";
 import { IBase, ICastCrew } from "@/lib/typesAPI";
 
 // API for getting media cast and crew
@@ -7,11 +6,9 @@ export async function getMediaCastCrew(
   type: string,
 ): Promise<ICastCrew> {
   try {
-    // Fetching the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}${type}/${mediaId}/${
-        type === "tv" ? "aggregate_" : ""
-      }credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`,
+      `/.netlify/functions/tmdb-cast-crew?id=${mediaId}&type=${type}`,
     );
 
     // Guard clause
@@ -38,11 +35,9 @@ export async function getMediaSimilar(
   type: string,
 ): Promise<IBase[]> {
   try {
-    // Fetching the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}${type}/${mediaId}/similar?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`,
+      `/.netlify/functions/tmdb-similar?id=${mediaId}&type=${type}`,
     );
 
     // Guard clause
