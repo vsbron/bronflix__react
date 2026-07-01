@@ -3,11 +3,11 @@ import type { Context } from "@netlify/functions";
 export default async (req: Request, context: Context) => {
   // Get the show ID from query params
   const url = new URL(req.url);
-  const showId = url.searchParams.get("id");
+  const collectionId = url.searchParams.get("id");
 
   // Guard clause
-  if (!showId) {
-    return new Response(JSON.stringify({ error: "Missing show ID" }), {
+  if (!collectionId) {
+    return new Response(JSON.stringify({ error: "Missing collection ID" }), {
       status: 400,
       headers: { "Content-Type": "application/json" },
     });
@@ -15,13 +15,13 @@ export default async (req: Request, context: Context) => {
 
   // Fetch from TMDB
   const response = await fetch(
-    `https://api.themoviedb.org/3/tv/${showId}?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
+    `https://api.themoviedb.org/3/collection/${collectionId}/?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
   );
 
   // Guard clause
   if (!response.ok) {
     return new Response(
-      JSON.stringify({ error: "Failed to fetch show data" }),
+      JSON.stringify({ error: "Failed to fetch the collection data" }),
       {
         status: response.status,
         headers: { "Content-Type": "application/json" },

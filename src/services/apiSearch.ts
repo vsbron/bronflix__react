@@ -1,4 +1,3 @@
-import { MEDIA_URL } from "@/lib/constants";
 import { ISearchResults } from "@/lib/typesAPI";
 
 // API for getting search results
@@ -7,11 +6,9 @@ export async function getSearchResults(
   page: number,
 ): Promise<ISearchResults> {
   try {
-    // Fetching the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}search/multi?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }&query=${encodeURIComponent(query)}&page=${page}`,
+      `/.netlify/functions/tmdb-search?query=${encodeURIComponent(query)}&page=${page}`,
     );
 
     // Guard clause

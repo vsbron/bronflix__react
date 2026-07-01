@@ -1,22 +1,19 @@
-import { MEDIA_URL } from "@/lib/constants";
 import { ICollection } from "@/lib/typesAPI";
 
 // API for getting movie collection
 export async function getMovieCollection(
-  collectionId: string
+  collectionId: string,
 ): Promise<ICollection> {
   try {
-    // Fetching the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}collection/${collectionId}?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`
+      `/.netlify/functions/tmdb-collection?id=${collectionId}`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the collection data: ${response.statusText}`
+        `Failed to fetch the collection data: ${response.statusText}`,
       );
     }
 

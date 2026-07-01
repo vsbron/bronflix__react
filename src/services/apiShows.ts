@@ -1,4 +1,3 @@
-import { MEDIA_URL } from "@/lib/constants";
 import { APIFetchType, ISeason, IShow, IShowList } from "@/lib/typesAPI";
 
 // API for getting the shows

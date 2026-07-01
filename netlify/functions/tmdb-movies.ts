@@ -32,7 +32,7 @@ export default async (req: Request, context: Context) => {
   // Getting the actual data
   const data = await response.json();
 
-  // Cache for 30 minutes
+  // Return the response with 30 minutes cache
   return new Response(JSON.stringify(data), {
     status: 200,
     headers: {
