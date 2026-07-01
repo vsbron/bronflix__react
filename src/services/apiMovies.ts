@@ -1,4 +1,3 @@
-import { MEDIA_URL } from "@/lib/constants";
 import { APIFetchType, IMovie, IMovieList } from "@/lib/typesAPI";
 
 // API for getting movies
@@ -88,31 +87,5 @@ export async function getMovie(movieId: number): Promise<IMovie> {
   } catch (error: unknown) {
     console.error(error);
     throw new Error("An error occurred while fetching movie data");
-  }
-}
-
-// API for movies from specific genre
-export async function getMoviesGenre(genreId: string): Promise<IMovieList[]> {
-  try {
-    // Fetching the data through serverless function
-    const response = await fetch(
-      `/.netlify/functions/tmdb-movies-by-genre?id=${genreId}`,
-    );
-
-    // Guard clause
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch the movies with selected genre: ${response.statusText}`,
-      );
-    }
-
-    // Getting the actual data
-    const data = await response.json();
-
-    // Return the movie list
-    return data.results;
-  } catch (error: unknown) {
-    console.error(error);
-    throw new Error("An error occurred while fetching movies data");
   }
 }
