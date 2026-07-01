@@ -74,9 +74,11 @@ export async function getUpcomingMovies(): Promise<IMovieList[]> {
 // API for getting specific movie
 export async function getMovie(movieId: number): Promise<IMovie> {
   try {
-    // Fetching the data through serverless function
+    // Fetching the data
     const response = await fetch(
-      `/.netlify/functions/tmdb-movie?id=${movieId}`,
+      `${MEDIA_URL}movie/${movieId}?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }`,
     );
 
     // Guard clause
