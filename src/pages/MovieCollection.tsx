@@ -40,7 +40,7 @@ function MovieCollection() {
           name="keywords"
           content={`${name}, collection, movies, films, related films, movie collection, genres, overview, titles`}
         />
-        <meta name="robots" content="index,follow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

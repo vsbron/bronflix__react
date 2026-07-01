@@ -14,8 +14,6 @@ function AIMode() {
       <Helmet>
         <title>{META_AI_TITLE}</title>
         <meta name="description" content={META_AI_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
-        <meta name="robots" content="index,follow" />
       </Helmet>
 
       {/* CONTENT */}

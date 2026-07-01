@@ -45,7 +45,7 @@ function Show() {
           name="keywords"
           content={`${name}, show, TV series, plot, cast, crew, release date, creator, director, actors, genres, rating, episodes, seasons, trailer`}
         />
-        <meta name="robots" content="index,follow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

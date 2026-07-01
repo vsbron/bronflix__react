@@ -15,7 +15,7 @@ function AboutUs() {
       <Helmet>
         <title>{META_ABOUT_US_TITLE}</title>
         <meta name="description" content={META_ABOUT_US_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

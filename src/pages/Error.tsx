@@ -13,7 +13,6 @@ function Error() {
       <Helmet>
         <title>{META_ERROR_TITLE}</title>
         <meta name="description" content={META_ERROR_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
       </Helmet>
 
       {/*Content */}

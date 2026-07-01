@@ -12,7 +12,6 @@ function NotFound() {
       <Helmet>
         <title>{META_NOT_FOUND_TITLE}</title>
         <meta name="description" content={META_NOT_FOUND_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
       </Helmet>
 
       {/* Content */}

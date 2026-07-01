@@ -15,7 +15,7 @@ function Sitemap() {
       <Helmet>
         <title>{META_SITEMAP_TITLE}</title>
         <meta name="description" content={META_SITEMAP_DESC} />
-        <meta name="robots" content="index,follow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

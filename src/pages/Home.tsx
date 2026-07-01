@@ -23,7 +23,7 @@ function Home() {
         <title>{META_MAIN_TITLE}</title>
         <meta name="description" content={META_MAIN_DESC} />
         <meta name="keywords" content={META_MAIN_KEYW} />
-        <meta name="robots" content="index,follow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

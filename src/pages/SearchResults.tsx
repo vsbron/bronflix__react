@@ -19,7 +19,6 @@ function SearchResults() {
           "{query}" {META_SEARCH_TITLE}
         </title>
         <meta name="description" content={META_SEARCH_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
       </Helmet>
 
       {/*Content */}

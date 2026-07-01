@@ -41,7 +41,7 @@ function MoviesByGenre() {
           {META_MOVIES_GENRE_TITLE}
         </title>
         <meta name="description" content={META_MOVIES_GENRE_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

@@ -16,7 +16,6 @@ function ErrorForm() {
       <Helmet>
         <title>{META_ERROR_FORM_TITLE}</title>
         <meta name="description" content={META_ERROR_FORM_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
       </Helmet>
 
       {/*Content */}

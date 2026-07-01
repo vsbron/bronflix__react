@@ -15,7 +15,7 @@ function ContactUs() {
       <Helmet>
         <title>{META_CONTACT_TITLE}</title>
         <meta name="description" content={META_CONTACT_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

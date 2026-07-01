@@ -15,7 +15,7 @@ function AppInfo() {
       <Helmet>
         <title>{META_APP_INFO_TITLE}</title>
         <meta name="description" content={META_APP_INFO_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}
@@ -126,7 +126,8 @@ function AppInfo() {
               with saved preferences and recommendations.
             </li>
             <li>
-              <strong>Responsive Design</strong>: Supports mobile devices with a minimum width of 360px.
+              <strong>Responsive Design</strong>: Supports mobile devices with a
+              minimum width of 360px.
             </li>
           </ul>
           <AnchorTarget id="page-descriptions" />

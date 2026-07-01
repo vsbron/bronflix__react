@@ -16,7 +16,6 @@ function Privacy() {
       <Helmet>
         <title>{META_PRIVACY_TITLE}</title>
         <meta name="description" content={META_PRIVACY_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
       </Helmet>
 
       {/* Content */}

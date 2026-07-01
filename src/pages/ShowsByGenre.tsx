@@ -38,7 +38,7 @@ function ShowsByGenre() {
           {META_SHOWS_GENRE_TITLE}
         </title>
         <meta name="description" content={META_SHOWS_GENRE_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

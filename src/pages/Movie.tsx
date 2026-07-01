@@ -46,7 +46,7 @@ function Movie() {
           name="keywords"
           content={`${title}, movie, film, plot, cast, crew, release date, director, producer, actors, genres, rating, runtime, trailer`}
         />
-        <meta name="robots" content="index,follow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

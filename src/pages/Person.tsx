@@ -83,7 +83,7 @@ function Person() {
           name="keywords"
           content={`${name}, biography, filmography, career, notable works, birthdate, place of birth, movies, shows`}
         />
-        <meta name="robots" content="index,follow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

@@ -24,7 +24,7 @@ function MoviesMain() {
         <title>{META_MAIN_MOVIES_TITLE}</title>
         <meta name="description" content={META_MAIN_MOVIES_DESC} />
         <meta name="keywords" content={META_MAIN_MOVIES_KEYW} />
-        <meta name="robots" content="index,follow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}

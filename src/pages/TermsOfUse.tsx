@@ -16,7 +16,6 @@ function TermsOfUse() {
       <Helmet>
         <title>{META_TERMS_TITLE}</title>
         <meta name="description" content={META_TERMS_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
       </Helmet>
 
       {/*Content */}

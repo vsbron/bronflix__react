@@ -16,7 +16,6 @@ function Success() {
       <Helmet>
         <title>{META_SUCCESS_FORM_TITLE}</title>
         <meta name="description" content={META_SUCCESS_FORM_DESC} />
-        <meta name="robots" content="noindex,nofollow" />
       </Helmet>
 
       {/*Content */}

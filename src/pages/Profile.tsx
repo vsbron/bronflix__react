@@ -22,7 +22,7 @@ function Profile() {
           name="description"
           content="View and modify your profile information, including your personalized watch and like lists. Manage your preferences and keep track of your favorite movies, shows, and people"
         />
-        <meta name="robots" content="index,follow" />
+        {/* <meta name="robots" content="index, follow" /> */}
       </Helmet>
 
       {/* Content */}
