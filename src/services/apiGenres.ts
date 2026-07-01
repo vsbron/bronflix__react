@@ -1,14 +1,11 @@
-import { MEDIA_URL } from "@/lib/constants";
 import { APIFetchGenre, IGenre, IGenreMedia } from "@/lib/typesAPI";
 
 // API for getting the genres list
 export async function getGenres(type: APIFetchGenre): Promise<IGenre[]> {
   try {
-    // Fetch the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}genre/${type}/list?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`,
+      `/.netlify/functions/tmdb-genres?genre=${type}`,
     );
 
     // Guard clause
@@ -39,17 +36,15 @@ export async function getGenresMedia(
   page: number,
 ): Promise<IGenreMedia> {
   try {
-    // Fetching the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}discover/${type}?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }&with_genres=${genreId}&page=${page}`,
+      `/.netlify/functions/tmdb-genre-media?type=${type}&id=${genreId}&page=${page}`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the ${type} data: ${response.statusText}`,
+        `Failed to fetch the ${type} under chosen genre data: ${response.statusText}`,
       );
     }
 
