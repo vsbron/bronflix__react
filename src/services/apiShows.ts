@@ -59,13 +59,6 @@ export async function getSeason(
       `/.netlify/functions/tmdb-season?id=${showId}&season=${seasonNumber}`,
     );
 
-    // Fetching the data
-    const response = await fetch(
-      `${MEDIA_URL}tv/${showId}/season/${seasonNumber}?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`,
-    );
-
     // Guard clause
     if (!response.ok) {
       throw new Error(
