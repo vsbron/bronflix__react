@@ -4,20 +4,20 @@ import { IBase, ICastCrew } from "@/lib/typesAPI";
 // API for getting media cast and crew
 export async function getMediaCastCrew(
   mediaId: number,
-  type: string
+  type: string,
 ): Promise<ICastCrew> {
   try {
     // Fetching the data
     const response = await fetch(
       `${MEDIA_URL}${type}/${mediaId}/${
         type === "tv" ? "aggregate_" : ""
-      }credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`
+      }credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the cast & crew data: ${response.statusText}`
+        `Failed to fetch the cast & crew data: ${response.statusText}`,
       );
     }
 
@@ -35,20 +35,20 @@ export async function getMediaCastCrew(
 // API for getting similar media
 export async function getMediaSimilar(
   mediaId: number,
-  type: string
+  type: string,
 ): Promise<IBase[]> {
   try {
     // Fetching the data
     const response = await fetch(
       `${MEDIA_URL}${type}/${mediaId}/similar?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }`
+      }`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch related ${type} data: ${response.statusText}`
+        `Failed to fetch related ${type} data: ${response.statusText}`,
       );
     }
 

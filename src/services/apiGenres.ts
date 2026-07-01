@@ -8,13 +8,13 @@ export async function getGenres(type: APIFetchGenre): Promise<IGenre[]> {
     const response = await fetch(
       `${MEDIA_URL}genre/${type}/list?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }`
+      }`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the ${type} genres data: ${response.statusText}`
+        `Failed to fetch the ${type} genres data: ${response.statusText}`,
       );
     }
 
@@ -36,20 +36,20 @@ export async function getGenres(type: APIFetchGenre): Promise<IGenre[]> {
 export async function getGenresMedia(
   type: "movie" | "tv",
   genreId: string,
-  page: number
+  page: number,
 ): Promise<IGenreMedia> {
   try {
     // Fetching the data
     const response = await fetch(
       `${MEDIA_URL}discover/${type}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&with_genres=${genreId}&page=${page}`
+      }&with_genres=${genreId}&page=${page}`,
     );
 
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the ${type} data: ${response.statusText}`
+        `Failed to fetch the ${type} data: ${response.statusText}`,
       );
     }
 
@@ -61,7 +61,7 @@ export async function getGenresMedia(
   } catch (error: unknown) {
     console.error(error);
     throw new Error(
-      `An error occurred while fetching ${type} under chosen genre data`
+      `An error occurred while fetching ${type} under chosen genre data`,
     );
   }
 }
