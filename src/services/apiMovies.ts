@@ -4,11 +4,9 @@ import { APIFetchType, IMovie, IMovieList } from "@/lib/typesAPI";
 // API for getting movies
 export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
   try {
-    // Fetch the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}movie/${type}?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }&page=1&include_adult=false`,
+      `/.netlify/functions/tmdb-movies?type=${type}`,
     );
 
     // Guard clause
@@ -21,7 +19,7 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
     // Getting the actual data
     const data = await response.json();
 
-    // Ensure data.results not empty and is an array
+    // Make sure data.results not empty and is an array
     if (!data.results || !Array.isArray(data.results)) return [];
 
     // Return the movies
@@ -32,17 +30,15 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
   }
 }
 
-// API for getting movies
+// API for getting upcoming movies
 export async function getUpcomingMovies(): Promise<IMovieList[]> {
   try {
     // Getting current day
     const today = new Date().toISOString().split("T")[0];
 
-    // Fetch the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}movie/upcoming?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }&page=1&include_adult=false`,
+      `/.netlify/functions/tmdb-movies?type=upcoming`,
     );
 
     // Guard clause
@@ -55,7 +51,7 @@ export async function getUpcomingMovies(): Promise<IMovieList[]> {
     // Getting the actual data
     const data = await response.json();
 
-    // Ensure data.results not empty and is an array
+    // Make sure data.results not empty and is an array
     if (!data.results || !Array.isArray(data.results)) return [];
 
     // Filter movies that are releasing after today
@@ -95,14 +91,12 @@ export async function getMovie(movieId: number): Promise<IMovie> {
   }
 }
 
-// API for getting specific movie
+// API for movies from specific genre
 export async function getMoviesGenre(genreId: string): Promise<IMovieList[]> {
   try {
-    // Fetching the data
+    // Fetching the data through serverless function
     const response = await fetch(
-      `${MEDIA_URL}discover/movie?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }&with_genres=${genreId}`,
+      `/.netlify/functions/tmdb-movies-by-genre?id=${genreId}`,
     );
 
     // Guard clause

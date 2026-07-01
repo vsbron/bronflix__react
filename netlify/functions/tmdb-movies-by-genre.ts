@@ -1,13 +1,13 @@
 import type { Context } from "@netlify/functions";
 
 export default async (req: Request, context: Context) => {
-  // Get the movie ID from query params
+  // Get the genre ID from query params
   const url = new URL(req.url);
-  const movieId = url.searchParams.get("id");
+  const genreId = url.searchParams.get("id");
 
   // Guard clause
-  if (!movieId) {
-    return new Response(JSON.stringify({ error: "Missing movie ID" }), {
+  if (!genreId) {
+    return new Response(JSON.stringify({ error: "Missing genre ID" }), {
       status: 400,
       headers: { "Content-Type": "application/json" },
     });
@@ -15,13 +15,15 @@ export default async (req: Request, context: Context) => {
 
   // Fetch from TMDB
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
+    `https://api.themoviedb.org/3/discover/movie?api_key=${Netlify.env.get("TMDB_API_KEY")}&with_genres=${genreId}`,
   );
 
   // Guard clause
   if (!response.ok) {
     return new Response(
-      JSON.stringify({ error: "Failed to fetch movie data" }),
+      JSON.stringify({
+        error: `Failed to fetch the movies with selected genre: ${response.statusText}`,
+      }),
       {
         status: response.status,
         headers: { "Content-Type": "application/json" },
