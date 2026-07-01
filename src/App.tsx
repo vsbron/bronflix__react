@@ -46,7 +46,7 @@ const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
 // Setting up the query client
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { staleTime: 60 * 1000 },
+    queries: { staleTime: 10 * 60 * 1000 },
   },
 });
 

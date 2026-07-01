@@ -1,6 +1,7 @@
-import type { Context } from "@netlify/functions";
+import "@netlify/functions";
+import { TMDB_BASE_URL } from "../utils/constants";
 
-export default async (req: Request, context: Context) => {
+export default async (req: Request) => {
   // Get the shows list type from query params (popular, top_rated, upcoming, etc.)
   const url = new URL(req.url);
   const type = url.searchParams.get("type");
@@ -15,7 +16,7 @@ export default async (req: Request, context: Context) => {
 
   // Fetch from TMDB
   const response = await fetch(
-    `https://api.themoviedb.org/3/tv/${type}?api_key=${Netlify.env.get("TMDB_API_KEY")}&page=1&include_adult=false`,
+    `${TMDB_BASE_URL}/tv/${type}?api_key=${Netlify.env.get("TMDB_API_KEY")}&page=1&include_adult=false`,
   );
 
   // Guard clause

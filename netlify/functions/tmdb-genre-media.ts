@@ -1,7 +1,8 @@
-import type { Context } from "@netlify/functions";
+import "@netlify/functions";
+import { TMDB_BASE_URL } from "../utils/constants";
 
-export default async (req: Request, context: Context) => {
-  // Get the movie ID from query params
+export default async (req: Request) => {
+  // Get the media type, genre ID and page number from query params
   const url = new URL(req.url);
   const type = url.searchParams.get("type");
   const genreId = url.searchParams.get("id");
@@ -20,7 +21,7 @@ export default async (req: Request, context: Context) => {
 
   // Fetch from TMDB
   const response = await fetch(
-    `https://api.themoviedb.org/3/discover/${type}?api_key=${Netlify.env.get("TMDB_API_KEY")}&with_genres=${genreId}&page=${page}`,
+    `${TMDB_BASE_URL}/discover/${type}?api_key=${Netlify.env.get("TMDB_API_KEY")}&with_genres=${genreId}&page=${page}`,
   );
 
   // Guard clause

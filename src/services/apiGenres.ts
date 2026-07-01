@@ -5,7 +5,7 @@ export async function getGenres(type: APIFetchGenre): Promise<IGenre[]> {
   try {
     // Fetching the data through serverless function
     const response = await fetch(
-      `/.netlify/functions/tmdb-genres?genre=${type}`,
+      `/.netlify/functions/tmdb-genres?type=${type}`,
     );
 
     // Guard clause

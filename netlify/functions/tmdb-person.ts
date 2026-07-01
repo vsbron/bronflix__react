@@ -1,7 +1,8 @@
-import type { Context } from "@netlify/functions";
+import "@netlify/functions";
+import { TMDB_BASE_URL } from "../utils/constants";
 
-export default async (req: Request, context: Context) => {
-  // Get the movie ID from query params
+export default async (req: Request) => {
+  // Get the person ID from query params
   const url = new URL(req.url);
   const personId = url.searchParams.get("id");
 
@@ -15,7 +16,7 @@ export default async (req: Request, context: Context) => {
 
   // Fetch from TMDB
   const response = await fetch(
-    `https://api.themoviedb.org/3/person/${personId}?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
+    `${TMDB_BASE_URL}/person/${personId}?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
   );
 
   // Guard clause

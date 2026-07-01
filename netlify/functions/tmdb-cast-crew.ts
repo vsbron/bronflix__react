@@ -1,7 +1,9 @@
-import type { Context } from "@netlify/functions";
+import "@netlify/functions";
+import { TMDB_BASE_URL } from "../utils/constants";
 
-export default async (req: Request, context: Context) => {
-  // Fetch from TMDB
+// Function that fetched cast and crew from movie/show
+export default async (req: Request) => {
+  // Get the media type & ID from query params
   const url = new URL(req.url);
   const mediaId = url.searchParams.get("id");
   const type = url.searchParams.get("type");
@@ -16,7 +18,7 @@ export default async (req: Request, context: Context) => {
 
   // Fetch from TMDB
   const response = await fetch(
-    `https://api.themoviedb.org/3/${type}/${mediaId}/${type === "tv" ? "aggregate_" : ""}credits?api_key=${Netlify.env.get("TMDB_API_KEY")}&language=en-US`,
+    `${TMDB_BASE_URL}/${type}/${mediaId}/${type === "tv" ? "aggregate_" : ""}credits?api_key=${Netlify.env.get("TMDB_API_KEY")}&language=en-US`,
   );
 
   // Guard clause

@@ -1,9 +1,10 @@
-import type { Context } from "@netlify/functions";
+import "@netlify/functions";
+import { TMDB_BASE_URL } from "../utils/constants";
 
-export default async (req: Request, context: Context) => {
+export default async () => {
   // Fetch from TMDB
   const response = await fetch(
-    `https://api.themoviedb.org/3/person/popular?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
+    `${TMDB_BASE_URL}/person/popular?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
   );
 
   // Guard clause
