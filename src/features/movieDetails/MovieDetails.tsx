@@ -41,8 +41,6 @@ function MovieDetails({ movie }: MovieDetailsProps) {
     belongs_to_collection: collection,
   } = movie;
 
-  console.log(movie);
-
   // Getting user data from Redux store
   const { uid } = useUser();
 
