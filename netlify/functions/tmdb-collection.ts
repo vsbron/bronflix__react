@@ -15,7 +15,7 @@ export default async (req: Request, context: Context) => {
 
   // Fetch from TMDB
   const response = await fetch(
-    `https://api.themoviedb.org/3/collection/${collectionId}/?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
+    `https://api.themoviedb.org/3/collection/${collectionId}?api_key=${Netlify.env.get("TMDB_API_KEY")}`,
   );
 
   // Guard clause
