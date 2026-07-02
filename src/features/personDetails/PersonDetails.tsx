@@ -57,8 +57,14 @@ function PersonDetails({ person }: PersonDetailsProps) {
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
     try {
+      // Check if user still authenticated
+      if (!auth.currentUser) {
+        console.error("No authenticated user found");
+        return;
+      }
+
       // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userRef = doc(db, "users", auth.currentUser.uid);
       const userSnap = await getDoc(userRef);
 
       // Guard clause

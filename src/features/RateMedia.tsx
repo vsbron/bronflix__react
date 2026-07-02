@@ -39,7 +39,7 @@ function RateMedia({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [rateError, setRateError] = useState<string | null>(null);
   const [rate, setRate] = useState<number | undefined>(
-    currentRate || undefined
+    currentRate || undefined,
   );
 
   // Button handlers
@@ -55,7 +55,7 @@ function RateMedia({
       }
 
       // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userRef = doc(db, "users", auth.currentUser.uid);
       const userSnap = await getDoc(userRef);
 
       // Guard clause
@@ -77,10 +77,10 @@ function RateMedia({
         newRate === 0
           ? currentLikedList.filter((m) => m.id !== id)
           : currentLikedList.some((m) => m.id === id)
-          ? currentLikedList.map((m) =>
-              m.id === id ? { id, rate: newRate } : m
-            )
-          : [...currentLikedList, { id, rate: newRate }];
+            ? currentLikedList.map((m) =>
+                m.id === id ? { id, rate: newRate } : m,
+              )
+            : [...currentLikedList, { id, rate: newRate }];
 
       // Update the rated media list in the state and firebase
       dispatch(
@@ -88,7 +88,7 @@ function RateMedia({
           updatedData: {
             [isMovie ? "ratedMovies" : "ratedShows"]: updatedList,
           },
-        })
+        }),
       );
     } catch (e: unknown) {
       console.error(e);
