@@ -6,7 +6,7 @@ export default async (req: Request) => {
   const url = new URL(req.url);
   const type = url.searchParams.get("type");
   const genreId = url.searchParams.get("id");
-  const page = url.searchParams.get("page") || 1;
+  const page = url.searchParams.get("page");
 
   // Guard clause
   if (!type || !genreId) {

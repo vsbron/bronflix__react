@@ -3,7 +3,7 @@ import { ISearchResults } from "@/lib/typesAPI";
 // API for getting search results
 export async function getSearchResults(
   query: string,
-  page?: number,
+  page: number = 1,
   signal?: AbortSignal,
 ): Promise<ISearchResults> {
   try {

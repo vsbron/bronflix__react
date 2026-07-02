@@ -37,7 +37,7 @@ export async function getGenres(
 export async function getGenresMedia(
   type: "movie" | "tv",
   genreId: string,
-  page: number,
+  page: number = 1,
 ): Promise<IGenreMedia> {
   try {
     // Fetching the data through serverless function

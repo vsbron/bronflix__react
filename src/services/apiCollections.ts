@@ -2,7 +2,7 @@ import { ICollection } from "@/lib/typesAPI";
 
 // API for getting movie collection
 export async function getMovieCollection(
-  collectionId: ,
+  collectionId: string,
   signal?: AbortSignal,
 ): Promise<ICollection> {
   try {

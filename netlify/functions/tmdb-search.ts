@@ -5,7 +5,7 @@ export default async (req: Request) => {
   // Get the search query and page number from query params
   const url = new URL(req.url);
   const query = url.searchParams.get("query");
-  const page = Number(url.searchParams.get("page")) || 1;
+  const page = Number(url.searchParams.get("page"));
 
   // Guard clause
   if (!query) {
