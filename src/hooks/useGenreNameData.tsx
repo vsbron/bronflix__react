@@ -18,7 +18,7 @@ export function useGenreNameData(type: "tv" | "movie", genreId: string) {
 
       try {
         // Get the full genres list, find the one we're interested in
-        const data = await getGenres("movie", signal);
+        const data = await getGenres(type, signal);
         const genre = data.find(
           (g: { id: number; name: string }) => g.id === parseInt(genreId),
         );

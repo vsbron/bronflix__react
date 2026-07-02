@@ -42,6 +42,8 @@ function GenreMediaList({ genreId, type }: GenreMediaListProps) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  console.log(data);
+
   // Returned JSX
   return (
     <>
