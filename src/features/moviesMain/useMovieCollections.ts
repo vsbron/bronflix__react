@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { COLLECTION_IDS, MEDIA_URL } from "@/lib/constants";
+import { COLLECTION_IDS } from "@/lib/constants";
 import { ICollection } from "@/lib/typesAPI";
 
 const useMovieCollections = () => {
@@ -24,17 +24,14 @@ const useMovieCollections = () => {
         // Fetch all pre-determined IDs
         const responses = await Promise.all(
           COLLECTION_IDS.map((id) =>
-            fetch(
-              `${MEDIA_URL}collection/${id}?api_key=${
-                import.meta.env.VITE_TMDB_API_KEY
-              }`,
-              { signal }
-            ).then((res) =>
+            fetch(`/.netlify/functions/tmdb-collection?id=${id}`, {
+              signal,
+            }).then((res) =>
               res.ok
                 ? res.json()
-                : Promise.reject(`Failed to fetch collection ${id}`)
-            )
-          )
+                : Promise.reject(`Failed to fetch collection ${id}`),
+            ),
+          ),
         );
         // Update the state
         setCollections(responses);

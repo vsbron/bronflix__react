@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-import { MEDIA_URL } from "@/lib/constants";
 import { GenresContextType, GenresProviderProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 
@@ -21,13 +20,11 @@ export function GenresProvider({ children }: GenresProviderProps) {
     async function fetchGenres() {
       try {
         const response = await fetch(
-          `${MEDIA_URL}genre/movie/list?api_key=${
-            import.meta.env.VITE_TMDB_API_KEY
-          }&language=en-US`,
-          { signal }
+          `/.netlify/functions/tmdb-genres?genre=movie`,
+          { signal },
         );
         const data = await response.json();
-        setGenres(data.genres); // Assuming the API returns a "genres" array
+        setGenres(data.genres);
       } catch (error) {
         // Ignore the abort controller error
         if (error instanceof DOMException && error.name === "AbortError") {

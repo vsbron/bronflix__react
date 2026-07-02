@@ -5,7 +5,7 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { useMobileNav } from "@/context/MobileNavContext";
 import { useResponsive } from "@/hooks/useResponsive";
-import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
+import { MIN_SEARCH_CHARS } from "@/lib/constants";
 import { ISearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchBriefResults from "@/components/header/SearchBriefResults";
@@ -39,9 +39,7 @@ function Search() {
     try {
       // Fetching the data
       const res = await fetch(
-        `${MEDIA_URL}search/multi?api_key=${
-          import.meta.env.VITE_TMDB_API_KEY
-        }&query=${encodeURIComponent(inputText)}`,
+        `/.netlify/functions/tmdb-search?query=${encodeURIComponent(inputText)}`,
         { signal },
       );
 

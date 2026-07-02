@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import useModal from "@/context/ModalContext";
-import { MEDIA_URL } from "@/lib/constants";
 import { IVideo } from "@/lib/typesAPI";
 
 function useTrailer(id: number, type: "tv" | "movie") {
@@ -20,20 +19,19 @@ function useTrailer(id: number, type: "tv" | "movie") {
     const controller = new AbortController();
     const { signal } = controller;
 
-    let fetchURL = `${MEDIA_URL}${type}/${id}/videos?api_key=${
-      import.meta.env.VITE_TMDB_API_KEY
-    }`;
-
     // Fetching data
     async function fetchVideo() {
       try {
-        const response = await fetch(fetchURL, { signal });
+        const response = await fetch(
+          `/.netlify/functions/tmdb-trailer?type=${type}&id=${id}`,
+          { signal },
+        );
         const data = await response.json();
 
         // Find the YouTube trailer in the data
         const trailer = data.results.find(
           (video: IVideo) =>
-            video.type === "Trailer" && video.site === "YouTube"
+            video.type === "Trailer" && video.site === "YouTube",
         );
 
         // Updating the state of video

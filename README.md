@@ -153,7 +153,7 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 - **State Management**: Redux for managing global state.
 - **Authentication**: Firebase Authentication and Firestore are used to handle secure user sign-up, login, and persistent user data for personalized experiences.
 - **Icons**: HeroIcons for modern and consistent UI elements.
-- **API**: TMDB API for fetching movies, shows, and actor data.
+- **API**: TMDB API for fetching movies, shows, and actor data through a serverless proxy layer, keeping the API key secure on the server side.
 - **Meta Management**: React Helmet Async is used to manage dynamic meta tags, improving SEO and social sharing by dynamically adjusting the title, description, and other meta information based on the page the user is on.
 - **Form Handling**: React Hook Form is used for handling the contact form, with Zod providing schema-based validation to ensure form data integrity.
 - **Code Splitting**: The app optimizes its initial load time by dynamically loading components as needed, reducing the overall bundle size and improving performance.
@@ -163,7 +163,6 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 ## Future updates
 
 - **AI Chat**: Implement a small chat with the support of AI to recommend movies it. Place restrictions to questions!
-- **API Fetch**: Rewrite media fetching as API call for better caching.
 
 ---
 
