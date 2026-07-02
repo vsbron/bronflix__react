@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { doc, getDoc } from "@firebase/firestore";
+import { arrayRemove, arrayUnion } from "@firebase/firestore";
 import { HeartIcon } from "@heroicons/react/24/solid";
 
 import { GENDERS } from "@/lib/constants";
 import { PersonDetailsProps } from "@/lib/types";
 import { AppDispatch } from "@/lib/typesRedux";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
-import { auth, db } from "@/utils/firebase";
+import { auth } from "@/utils/firebase";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate, getMediaImages } from "@/utils/helpers";
 
@@ -56,33 +56,23 @@ function PersonDetails({ person }: PersonDetailsProps) {
 
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
+    // Check if user still authenticated
+    if (!auth.currentUser) {
+      console.error("No authenticated user found");
+      return;
+    }
+
     try {
-      // Check if user still authenticated
-      if (!auth.currentUser) {
-        console.error("No authenticated user found");
-        return;
-      }
-
-      // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth.currentUser.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) return;
-
-      // Getting the current list of liked people
-      const currentData = userSnap.data();
-      const currentLikedPeople = Array.isArray(currentData.likedPeople)
-        ? currentData.likedPeople
-        : [];
-
-      // Checking whether we need to add or remove the person from the list
-      const updatedList = currentLikedPeople.some((id) => id === person.id)
-        ? currentLikedPeople.filter((id) => id !== person.id)
-        : [...currentLikedPeople, person.id];
-
-      // Update the liked people list in the state and firebase
-      dispatch(updateUserData({ updatedData: { likedPeople: updatedList } }));
+      // Update the user with new favorite item
+      dispatch(
+        updateUserData({
+          updatedData: {
+            likedPeople: (isLiked
+              ? arrayRemove(person.id)
+              : arrayUnion(person.id)) as unknown as number[],
+          },
+        }),
+      );
     } catch (e: unknown) {
       console.error(e);
       throw new Error(

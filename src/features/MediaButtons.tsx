@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { arrayUnion, arrayRemove, doc } from "@firebase/firestore";
+import { arrayUnion, arrayRemove } from "@firebase/firestore";
 import { EyeIcon, HeartIcon } from "@heroicons/react/24/solid";
 
 import { ModalProvider } from "@/context/ModalContext";
@@ -8,7 +8,7 @@ import { BASE_GAP_CLASS } from "@/lib/constants";
 import { MediaButtonsProps } from "@/lib/types";
 import { AppDispatch } from "@/lib/typesRedux";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
-import { auth, db } from "@/utils/firebase";
+import { auth } from "@/utils/firebase";
 
 import TrailerButton from "@/components/TrailerButton";
 import Button from "@/components/ui/Button";
