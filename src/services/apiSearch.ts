@@ -3,12 +3,14 @@ import { ISearchResults } from "@/lib/typesAPI";
 // API for getting search results
 export async function getSearchResults(
   query: string,
-  page: number,
+  page?: number,
+  signal?: AbortSignal,
 ): Promise<ISearchResults> {
   try {
     // Fetching the data through serverless function
     const response = await fetch(
       `/.netlify/functions/tmdb-search?query=${encodeURIComponent(query)}&page=${page}`,
+      { signal },
     );
 
     // Guard clause

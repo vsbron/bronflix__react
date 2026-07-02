@@ -2,12 +2,14 @@ import { ICollection } from "@/lib/typesAPI";
 
 // API for getting movie collection
 export async function getMovieCollection(
-  collectionId: string,
+  collectionId: ,
+  signal?: AbortSignal,
 ): Promise<ICollection> {
   try {
     // Fetching the data through serverless function
     const response = await fetch(
       `/.netlify/functions/tmdb-collection?id=${collectionId}`,
+      { signal },
     );
 
     // Guard clause

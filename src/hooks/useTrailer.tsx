@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import useModal from "@/context/ModalContext";
 import { IVideo } from "@/lib/typesAPI";
+import { getTrailer } from "@/services/apiTrailer";
 
 function useTrailer(id: number, type: "tv" | "movie") {
   // Setting the state for the fetched video
@@ -22,14 +23,11 @@ function useTrailer(id: number, type: "tv" | "movie") {
     // Fetching data
     async function fetchVideo() {
       try {
-        const response = await fetch(
-          `/.netlify/functions/tmdb-trailer?type=${type}&id=${id}`,
-          { signal },
-        );
-        const data = await response.json();
+        // Get the fetched data
+        const data = await getTrailer(id, type, signal);
 
         // Find the YouTube trailer in the data
-        const trailer = data.results.find(
+        const trailer = data.find(
           (video: IVideo) =>
             video.type === "Trailer" && video.site === "YouTube",
         );

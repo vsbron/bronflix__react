@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
+import { getGenres } from "@/services/apiGenres";
+
 import { GenresContextType, GenresProviderProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 
@@ -19,12 +21,8 @@ export function GenresProvider({ children }: GenresProviderProps) {
     // Fetching data
     async function fetchGenres() {
       try {
-        const response = await fetch(
-          `/.netlify/functions/tmdb-genres?genre=movie`,
-          { signal },
-        );
-        const data = await response.json();
-        setGenres(data.genres);
+        const data = await getGenres("movie", signal);
+        setGenres(data);
       } catch (error) {
         // Ignore the abort controller error
         if (error instanceof DOMException && error.name === "AbortError") {

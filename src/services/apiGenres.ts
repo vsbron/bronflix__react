@@ -1,11 +1,15 @@
 import { APIFetchGenre, IGenre, IGenreMedia } from "@/lib/typesAPI";
 
 // API for getting the genres list
-export async function getGenres(type: APIFetchGenre): Promise<IGenre[]> {
+export async function getGenres(
+  type: APIFetchGenre,
+  signal?: AbortSignal,
+): Promise<IGenre[]> {
   try {
     // Fetching the data through serverless function
     const response = await fetch(
       `/.netlify/functions/tmdb-genres?type=${type}`,
+      { signal },
     );
 
     // Guard clause

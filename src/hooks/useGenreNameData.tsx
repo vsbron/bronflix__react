@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { getGenres } from "@/services/apiGenres";
 
 export function useGenreNameData(type: "tv" | "movie", genreId: string) {
   // Setting the state for genre name, error and loading state
@@ -17,12 +18,8 @@ export function useGenreNameData(type: "tv" | "movie", genreId: string) {
 
       try {
         // Get the full genres list, find the one we're interested in
-        const response = await fetch(
-          `/.netlify/functions/tmdb-genres?genre=${type}`,
-          { signal },
-        );
-        const data = await response.json();
-        const genre = data.genres.find(
+        const data = await getGenres("movie", signal);
+        const genre = data.find(
           (g: { id: number; name: string }) => g.id === parseInt(genreId),
         );
 

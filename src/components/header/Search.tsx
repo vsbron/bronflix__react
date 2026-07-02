@@ -9,6 +9,7 @@ import { MIN_SEARCH_CHARS } from "@/lib/constants";
 import { ISearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchBriefResults from "@/components/header/SearchBriefResults";
+import { getSearchResults } from "@/services/apiSearch";
 
 // Initiating controller for fetch function
 let controller: AbortController | null = null;
@@ -38,18 +39,9 @@ function Search() {
 
     try {
       // Fetching the data
-      const res = await fetch(
-        `/.netlify/functions/tmdb-search?query=${encodeURIComponent(inputText)}`,
-        { signal },
-      );
-
-      // Guard clause
-      if (!res.ok) {
-        throw new Error(`Error: ${res.statusText}`);
-      }
+      const data = await getSearchResults(inputText, 1, signal);
 
       // Handling the fetched data
-      const data = await res.json();
       const briefData = data.results.slice(0, 3);
       const totalResults = data.total_results;
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { COLLECTION_IDS } from "@/lib/constants";
 import { ICollection } from "@/lib/typesAPI";
+import { getMovieCollection } from "@/services/apiCollections";
 
 const useMovieCollections = () => {
   // Setting the states for collections, error and loading state
@@ -23,15 +24,7 @@ const useMovieCollections = () => {
 
         // Fetch all pre-determined IDs
         const responses = await Promise.all(
-          COLLECTION_IDS.map((id) =>
-            fetch(`/.netlify/functions/tmdb-collection?id=${id}`, {
-              signal,
-            }).then((res) =>
-              res.ok
-                ? res.json()
-                : Promise.reject(`Failed to fetch collection ${id}`),
-            ),
-          ),
+          COLLECTION_IDS.map((id) => getMovieCollection(String(id), signal)),
         );
         // Update the state
         setCollections(responses);
