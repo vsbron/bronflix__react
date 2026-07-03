@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import { SITE_NAME } from "@/lib/constants";
+import { INFO_EMAIL, SITE_NAME } from "@/lib/constants";
 import { META_PRIVACY_DESC, META_PRIVACY_TITLE } from "@/lib/metaTags";
 
 import AnchorTarget from "@/components/ui/AnchorTarget";
@@ -214,9 +214,7 @@ function Privacy() {
             </li>
             <li>
               <strong>Email:</strong>{" "}
-              <a href="mailto:info@vsbronflix.netlify.app">
-                info@vsbronflix.netlify.app
-              </a>
+              <a href={`mailto:${INFO_EMAIL}`}>{INFO_EMAIL}</a>
             </li>
             <li>
               Or use our <Link to="/contact-us">Contact Us</Link> page
