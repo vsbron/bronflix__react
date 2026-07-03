@@ -46,7 +46,7 @@ export function useGenreNameData(type: "tv" | "movie", genreId: string) {
     return () => {
       controller.abort();
     };
-  }, [genreId]);
+  }, [genreId, type]);
 
   return { genreName, error, isLoading };
 }
