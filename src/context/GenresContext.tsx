@@ -10,6 +10,7 @@ const GenresContext = createContext<GenresContextType | undefined>(undefined);
 
 // The provider component that fetches the genres from API
 export function GenresProvider({ children }: GenresProviderProps) {
+  // Set the state value for genres array
   const [genres, setGenres] = useState<IGenre[]>([]);
 
   // Use effect that fetches data on mount
@@ -21,6 +22,7 @@ export function GenresProvider({ children }: GenresProviderProps) {
     // Fetching data
     async function fetchGenres() {
       try {
+        // Hardcoded "movie" because it used only in Featured Movies component
         const data = await getGenres("movie", signal);
         setGenres(data);
       } catch (error) {
