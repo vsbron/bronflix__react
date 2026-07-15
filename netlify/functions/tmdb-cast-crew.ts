@@ -1,5 +1,6 @@
 import "@netlify/functions";
 import { TMDB_BASE_URL } from "../utils/constants";
+import "./_shared/useLocalProxy";
 
 // Function that fetched cast and crew from movie/show
 export default async (req: Request) => {

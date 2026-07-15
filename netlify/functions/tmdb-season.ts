@@ -1,5 +1,6 @@
 import "@netlify/functions";
 import { TMDB_BASE_URL } from "../utils/constants";
+import "./_shared/useLocalProxy";
 
 export default async (req: Request) => {
   // Get the show ID and season number from query params
