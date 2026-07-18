@@ -5,6 +5,7 @@ export const MEDIA_IMG_URL = "https://image.tmdb.org/t/p/";
 export const EMAILJS_PUBLIC_KEY = "Z6SWDyMbtxfzu4GzU";
 
 export const AI_CHAT_STORAGE_KEY = "bronflix-ai-chat-history";
+export const AI_HISTORY_LIMIT = 10;
 
 export const MOVIE_CHANGE_INTERVAL = 10000;
 

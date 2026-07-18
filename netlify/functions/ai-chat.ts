@@ -3,16 +3,22 @@ import { GEMINI_SYSTEM_INSTRUCTION, GEMINI_URL } from "../utils/constants";
 import "./_shared/useLocalProxy";
 
 export default async (req: Request) => {
-  // Get the message from the request
-  const { message } = await req.json();
+  // Get the messages from the request
+  const { messages } = await req.json();
 
   // Guard clause
-  if (!message) {
-    return new Response(JSON.stringify({ error: "Missing user message" }), {
+  if (!messages || messages.length === 0) {
+    return new Response(JSON.stringify({ error: "Missing chat messages" }), {
       status: 400,
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  // Converting the chat history to Gemini's expected format
+  const contents = messages.map((msg: { role: string; text: string }) => ({
+    role: msg.role === "user" ? "user" : "model",
+    parts: [{ text: msg.text }],
+  }));
 
   // Fetch from Gemini
   const response = await fetch(
@@ -21,22 +27,12 @@ export default async (req: Request) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        systemInstruction: {
-          parts: [
-            {
-              text: GEMINI_SYSTEM_INSTRUCTION,
-            },
-          ],
+        systemInstruction: { parts: [{ text: GEMINI_SYSTEM_INSTRUCTION }] },
+        contents,
+        generationConfig: {
+          maxOutputTokens: 400,
+          thinkingConfig: { thinkingBudget: 0 },
         },
-        contents: [
-          {
-            parts: [
-              {
-                text: message,
-              },
-            ],
-          },
-        ],
       }),
     },
   );

@@ -1,6 +1,8 @@
+import { AIMessage } from "@/lib/types";
+
 // API for sending a message to the AI chat
 export async function getAIResponse(
-  message: string,
+  messages: AIMessage[],
   signal?: AbortSignal,
 ): Promise<string> {
   try {
@@ -8,7 +10,7 @@ export async function getAIResponse(
     const response = await fetch("/.netlify/functions/ai-chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ messages }),
       signal,
     });
 
