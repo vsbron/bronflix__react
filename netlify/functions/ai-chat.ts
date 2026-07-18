@@ -1,5 +1,5 @@
 import "@netlify/functions";
-import { GEMINI_URL } from "../utils/constants";
+import { GEMINI_SYSTEM_INSTRUCTION, GEMINI_URL } from "../utils/constants";
 import "./_shared/useLocalProxy";
 
 export default async (req: Request) => {
@@ -21,7 +21,22 @@ export default async (req: Request) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: message }] }],
+        systemInstruction: {
+          parts: [
+            {
+              text: GEMINI_SYSTEM_INSTRUCTION,
+            },
+          ],
+        },
+        contents: [
+          {
+            parts: [
+              {
+                text: message,
+              },
+            ],
+          },
+        ],
       }),
     },
   );
