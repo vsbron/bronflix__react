@@ -1,3 +1,6 @@
+import ReactMarkdown from "react-markdown";
+
+// Type props
 type AIChatMessageProps = {
   children: React.ReactNode;
   userMessage?: boolean;
@@ -7,6 +10,7 @@ type AIChatMessageProps = {
 const afterClass =
   "after:absolute after:-bottom-[9px] after:h-0 after:w-0 after:border-b-[10px] after:border-b-transparent after:content-['']";
 
+// The component
 function AIChatMessage({ children, userMessage = false }: AIChatMessageProps) {
   // Returned JSX
   return (
@@ -21,7 +25,11 @@ function AIChatMessage({ children, userMessage = false }: AIChatMessageProps) {
             : "bg-stone-800 rounded-bl-none after:left-0 after:border-l-[10px] after:border-l-stone-800"
         }`}
       >
-        {children}
+        {userMessage ? (
+          children
+        ) : (
+          <ReactMarkdown>{children as string}</ReactMarkdown>
+        )}
       </div>
     </div>
   );
