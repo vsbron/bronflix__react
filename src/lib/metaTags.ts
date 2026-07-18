@@ -30,7 +30,7 @@ export const META_SITEMAP_DESC = `Explore the comprehensive sitemap of ${SITE_NA
 export const META_SEARCH_TITLE = `search results${META_TITLE_END}`;
 export const META_SEARCH_DESC = `Browse search results on ${SITE_NAME}. Discover movies, TV shows, and actors that match your search, with detailed info, ratings, and more`;
 
-export const META_AI_TITLE = `Ask AI About Movies & TV${META_TITLE_END}`;
+export const META_AI_TITLE = `AI Recommendations${META_TITLE_END}`;
 export const META_AI_DESC = `Chat with AI on ${SITE_NAME} about movies, TV shows, and actors. Get personalized recommendations, discover similar titles, explore cast information, and find answers to your entertainment questions.`;
 
 export const META_ABOUT_US_TITLE = `About Us${META_TITLE_END}`;
