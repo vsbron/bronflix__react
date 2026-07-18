@@ -3,6 +3,10 @@ type AIChatMessageProps = {
   userMessage?: boolean;
 };
 
+// Common CSS for pseudo elements
+const afterClass =
+  "after:absolute after:-bottom-[9px] after:h-0 after:w-0 after:border-b-[10px] after:border-b-transparent after:content-['']";
+
 function AIChatMessage({ children, userMessage = false }: AIChatMessageProps) {
   // Returned JSX
   return (
@@ -11,7 +15,11 @@ function AIChatMessage({ children, userMessage = false }: AIChatMessageProps) {
     >
       {userMessage ? "You:" : "BroNflix:"}
       <div
-        className={`mt-1 py-4 px-8 text-3xl leading-snug rounded-md text-white relative ${userMessage ? "bg-red-900 rounded-br-none" : "bg-stone-800 rounded-bl-none"}`}
+        className={`mt-1 py-4 px-8 text-3xl leading-snug rounded-md text-white relative ${afterClass} ${
+          userMessage
+            ? "bg-red-900 rounded-br-none after:right-0 after:border-r-[10px] after:border-r-red-900"
+            : "bg-stone-800 rounded-bl-none after:left-0 after:border-l-[10px] after:border-l-stone-800"
+        }`}
       >
         {children}
       </div>
