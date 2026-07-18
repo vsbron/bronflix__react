@@ -33,7 +33,9 @@ html {
 }
 body {
   background-color: var(--color-black);
-  font: 400 1.6rem/1.5 "Roboto", sans-serif;
+  font:
+    400 1.6rem/1.5 "Roboto",
+    sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
@@ -88,6 +90,11 @@ ul a,
 .link {
   color: var(--color-rose--300);
   cursor: pointer;
+}
+
+hr {
+  margin: 2rem 0;
+  border-color: var(--color-stone--700);
 }
 
 p a:hover,
@@ -196,7 +203,7 @@ footer a:focus svg {
   );
 }
 
-@media screen and (max-width:767px){  
+@media screen and (max-width: 767px) {
   .movies-main-bg {
     background-image: url("assets/movies-bg-mobile.jpg");
     background-image: image-set(
@@ -204,9 +211,9 @@ footer a:focus svg {
       url("assets/movies-bg-mobile.jpg") type("image/jpeg"),
       url("assets/movies-bg.webp") type("image/webp") 2x,
       url("assets/movies-bg.jpg") type("image/jpeg") 2x
-      );
-    }
-    
+    );
+  }
+
   .shows-main-bg {
     background-image: url("assets/shows-bg-mobile.jpg");
     background-image: image-set(
