@@ -9,7 +9,7 @@ type AIChatInputProps = {
 
 // The component
 function AIChatInput({ onSend }: AIChatInputProps) {
-  // Create state value for input value
+  // Create state value for controlled input value
   const [value, setValue] = useState("");
 
   // Submit handler
@@ -29,7 +29,7 @@ function AIChatInput({ onSend }: AIChatInputProps) {
   return (
     <div className="flex justify-end gap-6 items-center">
       <form
-        className="flex gap-4 max-md:flex-row-reverse max-md:w-full relative"
+        className="flex gap-4 max-md:flex-row-reverse max-md:w-full relative w-full justify-end"
         onSubmit={(e) => handleAI(e)}
       >
         <input

@@ -248,3 +248,8 @@ export type FormLabelErrorProps = {
   name: string;
   children?: ReactNode;
 };
+
+export type AIMessage = {
+  role: "user" | "ai";
+  text: string;
+};
