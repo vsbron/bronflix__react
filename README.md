@@ -16,6 +16,7 @@ It features an index page, as well as separate pages for movies, shows, and peop
    - [Show Page](#show-page)
    - [Person Page](#person-page)
    - [Collection Page](#collection-page)
+   - [AI Mode Page](#ai-mode-page)
    - [Profile Page](#profile-page)
    - [Main Movies Page](#main-movies-page)
    - [Main Shows Page](#main-shows-page)
@@ -41,6 +42,7 @@ BroNflix allows users to explore movies, TV shows, and actors with dynamic conte
 - **Interactive Content**: The index page includes a variety of sections such as 'What's Hot?', 'Trending Shows', 'Trending Actors', and more, offering a dynamic browsing experience. Each section presents a carousel of movies, shows, and actors, offering users a variety of recommendations.
 - **Detailed Pages**: Each movie, show, and actor has its dedicated page with rich information, including posters, overviews, cast/crew, and similar recommendations.
 - **Seamless Navigation**: Users can click on items to navigate to their respective pages for more detailed information.
+- **AI Mode**: An AI-powered chat assistant that recommends movies, TV shows, and actors based on natural-language questions, keeping the conversation focused on entertainment topics.
 - **User Authentication**: Users can sign up, log in, and access their personalized profile, enhancing their experience with saved preferences and recommendations.
 - **Responsive Design**: Supports mobile devices with a minimum width of 360px.
 
@@ -103,6 +105,14 @@ Provides in-depth details about an actor or crew member:
 - Accessed from a movie page within a collection.
 - Displays the movie's poster, a brief overview, and a list of movies included in the collection.
 
+### **AI Mode Page**
+
+- A conversational interface where users can ask for movie, show, or actor recommendations in natural language.
+- Powered by Google's Gemini API through a serverless function, keeping the API key secure server-side.
+- Maintains short-term conversation context (last 10 messages) for natural back-and-forth follow-ups.
+- Chat history persists for the browser session via sessionStorage.
+- Responses are rendered with Markdown formatting for readable, structured recommendations.
+
 ### **Profile Page**
 
 The Profile Page serves as the user's hub, displaying their personal details and curated lists.
@@ -154,6 +164,7 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 - **Authentication**: Firebase Authentication and Firestore are used to handle secure user sign-up, login, and persistent user data for personalized experiences.
 - **Icons**: HeroIcons for modern and consistent UI elements.
 - **API**: TMDB API for fetching movies, shows, and actor data through a serverless proxy layer, keeping the API key secure on the server side.
+- **AI**: Google Gemini API (via a serverless proxy) powers the AI Mode chat, providing natural-language movie, show, and actor recommendations.
 - **Meta Management**: React Helmet Async is used to manage dynamic meta tags, improving SEO and social sharing by dynamically adjusting the title, description, and other meta information based on the page the user is on.
 - **Form Handling**: React Hook Form is used for handling the contact form, with Zod providing schema-based validation to ensure form data integrity.
 - **Code Splitting**: The app optimizes its initial load time by dynamically loading components as needed, reducing the overall bundle size and improving performance.
@@ -162,7 +173,7 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 
 ## Future updates
 
-- **AI Chat**: Implement a small chat with the support of AI to recommend movies it. Place restrictions to questions!
+- **AI Mode Enhancements**: Resolve AI-recommended titles into clickable cards with posters via TMDB, instead of plain text mentions.
 
 ---
 

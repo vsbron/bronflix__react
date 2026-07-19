@@ -60,6 +60,9 @@ function AppInfo() {
                   <a href="#collection-page">Collection Page</a>
                 </li>
                 <li>
+                  <a href="#ai-mode-page">AI Mode Page</a>
+                </li>
+                <li>
                   <a href="#profile-page">Profile Page</a>
                 </li>
                 <li>
@@ -119,6 +122,12 @@ function AppInfo() {
             <li>
               <strong>Seamless Navigation</strong>: Users can click on items to
               navigate to their respective pages for more detailed information.
+            </li>
+            <li>
+              <strong>AI Mode</strong>: An AI-powered chat assistant that
+              recommends movies, TV shows, and actors based on natural-language
+              questions, keeping the conversation focused on entertainment
+              topics.
             </li>
             <li>
               <strong>User Authentication</strong>: Users can sign up, log in,
@@ -230,6 +239,27 @@ function AppInfo() {
             Accessed from a movie page within a collection. Displays the movie's
             poster, a brief overview, and a list of movies included in the
             collection.
+          </p>
+          <AnchorTarget id="ai-mode-page" />
+          <Heading as="h3">AI Mode Page</Heading>
+          <p>
+            A conversational interface where users can ask for movie, show, or
+            actor recommendations in natural language.
+          </p>
+          <p>
+            Powered by Google's Gemini API through a serverless function,
+            keeping the API key secure server-side.
+          </p>
+          <p>
+            Maintains short-term conversation context (last 10 messages) for
+            natural back-and-forth follow-ups.
+          </p>
+          <p>
+            Chat history persists for the browser session via sessionStorage.
+          </p>
+          <p>
+            Responses are rendered with Markdown formatting for readable,
+            structured recommendations.
           </p>
           <AnchorTarget id="profile-page" />
           <Heading as="h3">Profile Page</Heading>
@@ -372,6 +402,11 @@ function AppInfo() {
             <li>
               <strong>API</strong>: TMDB API for fetching movies, shows, and
               actor data.
+            </li>
+            <li>
+              <strong>AI</strong>: Google Gemini API (via a serverless proxy)
+              powers the AI Mode chat, providing natural-language movie, show,
+              and actor recommendations.
             </li>
             <li>
               <strong>Meta Management</strong>: React Helmet Async is used to
