@@ -23,7 +23,9 @@ function ExploreMore() {
           using the <strong>search bar</strong> at the top. Browse through our{" "}
           <strong>genres</strong> for a wide variety of options, and explore
           curated <strong>collections</strong> and <strong>seasons</strong> of
-          your favorite shows.
+          your favorite shows. Not sure what to watch next? Try our{" "}
+          <strong>AI Mode</strong> for personalized recommendations based on
+          your mood or taste.
         </p>
         <p>
           If you're a member, you can save movies and shows to your{" "}
@@ -45,6 +47,11 @@ function ExploreMore() {
         <Button>
           <Link className="inline-block py-3 px-6" to="/shows">
             SERIES
+          </Link>
+        </Button>
+        <Button>
+          <Link className="inline-block py-3 px-6" to="/ai-mode">
+            AI MODE
           </Link>
         </Button>
         {uid && (
