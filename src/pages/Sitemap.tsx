@@ -44,9 +44,9 @@ function Sitemap() {
             <div>
               <h4>Main pages</h4>
               <ul>
-                {NAV_LINKS_MAIN.map((link) => (
+                {Object.values(NAV_LINKS_MAIN).map(({ path, label }) => (
                   <li>
-                    <Link to={link.path}>{link.label}</Link>
+                    <Link to={path}>{label}</Link>
                   </li>
                 ))}
               </ul>
@@ -54,9 +54,9 @@ function Sitemap() {
             <div>
               <h4>Additional pages</h4>
               <ul>
-                {NAV_LINKS_SECONDARY.map((link) => (
+                {Object.values(NAV_LINKS_SECONDARY).map(({ path, label }) => (
                   <li>
-                    <Link to={link.path}>{link.label}</Link>
+                    <Link to={path}>{label}</Link>
                   </li>
                 ))}
               </ul>

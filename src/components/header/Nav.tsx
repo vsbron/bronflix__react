@@ -14,7 +14,8 @@ function Nav() {
   // Returned JSX
   return (
     <nav className="flex flex-col gap-16 my-auto">
-      {NAV_LINKS_MAIN.slice(0, -1).map(({ path, label, icon }) => {
+      {Object.values(NAV_LINKS_MAIN).map(({ path, label, icon }) => {
+        if (!icon) return null;
         const Icon = OutlineIcons[icon as keyof typeof OutlineIcons];
         return (
           <Link key={path} to={path}>

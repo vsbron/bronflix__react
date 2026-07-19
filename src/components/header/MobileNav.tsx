@@ -54,11 +54,11 @@ function MobileNav() {
       <div className={`transition-all duration-500 w-full my-4 ${isMenuOpen ? "translate-y-0 delay-200 opacity-1" : "translate-y-60 delay-0 opacity-0"}`}>
         <Heading as="h2">Navigation</Heading>
         <ul className="m-0 flex flex-col gap-1.5 text-[1.7rem]" onClick={closeMenu}>
-          {NAV_LINKS_MAIN.map((link) => (
+          {Object.values(NAV_LINKS_MAIN).map(({ path, label }) => 
             <li>
-              <NavLink to={link.path}>{link.label}</NavLink>
-            </li>
-          ))}
+              <NavLink to={path}>{label}</NavLink>
+            </li>     
+          )}
           <li><NavLink to="/contact-us">Contact Us</NavLink></li>
         </ul>
       </div>
