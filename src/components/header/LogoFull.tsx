@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logoFull from "@/assets/bronflix-logo-full.svg";
 import { useMobileNav } from "@/context/MobileNavContext";
 import { SITE_NAME } from "@/lib/constants";
+import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function LogoFull() {
   // Getting the close mobile nav function from the context
@@ -10,7 +11,7 @@ function LogoFull() {
 
   // Returned JSX
   return (
-    <Link to="/" onClick={closeMenu}>
+    <Link to={NAV_LINKS_MAIN.movies.path} onClick={closeMenu}>
       <img
         src={logoFull}
         width="138"

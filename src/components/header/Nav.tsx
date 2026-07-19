@@ -4,8 +4,8 @@ import { UserIcon } from "@heroicons/react/24/outline";
 
 import { useUser } from "@/redux/reducers/userReducer";
 
+import { NAV_LINKS_OTHER, NAV_LINKS_MAIN } from "@/lib/navLinks";
 import { NavItemProps } from "@/lib/types";
-import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function Nav() {
   // Getting the id from user store
@@ -24,7 +24,7 @@ function Nav() {
         );
       })}
       {uid && (
-        <Link to="/profile">
+        <Link to={NAV_LINKS_OTHER.profile.path}>
           <NavItem icon={<UserIcon />} title="Profile" />
         </Link>
       )}

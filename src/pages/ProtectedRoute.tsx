@@ -6,6 +6,7 @@ import { useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
 import Loader from "@/components/ui/Loader";
+import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function ProtectedRoute() {
   // Setting the state for auth checking
@@ -26,7 +27,7 @@ function ProtectedRoute() {
   if (!authChecked || isLoading) return <Loader />;
 
   // Guard clause
-  if (!uid) return <Navigate to="/" replace />;
+  if (!uid) return <Navigate to={NAV_LINKS_MAIN.home.path} replace />;
 
   // Return outlet
   return <Outlet />;

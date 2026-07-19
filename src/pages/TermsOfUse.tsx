@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import { INFO_EMAIL, SITE_NAME } from "@/lib/constants";
-import { META_TERMS_DESC, META_TERMS_TITLE } from "@/lib/metaTags";
-
 import AnchorTarget from "@/components/ui/AnchorTarget";
 import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
+
+import { INFO_EMAIL, SITE_NAME } from "@/lib/constants";
+import { META_TERMS_DESC, META_TERMS_TITLE } from "@/lib/metaTags";
+import { NAV_LINKS_SECONDARY } from "@/lib/navLinks";
 
 function TermsOfUse() {
   // Returned JSX
@@ -172,7 +173,9 @@ function TermsOfUse() {
               <a href={`mailto:${INFO_EMAIL}`}>{INFO_EMAIL}</a>
             </li>
             <li>
-              Or use our <Link to="/contact-us">Contact Us</Link> page
+              Or use our{" "}
+              <Link to={NAV_LINKS_SECONDARY.contactUs.path}>Contact Us</Link>{" "}
+              page
             </li>
           </ul>
         </ContentWall>

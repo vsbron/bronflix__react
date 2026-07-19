@@ -7,6 +7,7 @@ import {
 } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
+import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function Success() {
   // Returned JSX
@@ -27,7 +28,8 @@ function Success() {
         </p>
         <p>
           In the meantime, feel free to return to the{" "}
-          <Link to="/">homepage</Link> and continue exploring our collection.
+          <Link to={NAV_LINKS_MAIN.home.path}>homepage</Link> and continue
+          exploring our collection.
         </p>
       </section>
     </>

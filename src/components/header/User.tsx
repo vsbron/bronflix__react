@@ -7,6 +7,7 @@ import { clearUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
 import Button from "@/components/ui/Button";
+import { NAV_LINKS_OTHER } from "@/lib/navLinks";
 
 function User() {
   // Getting the user name from the redux
@@ -31,7 +32,7 @@ function User() {
   // Returned JSX
   return (
     <div className="flex gap-6 items-center">
-      <Link to="/profile">
+      <Link to={NAV_LINKS_OTHER.profile.path}>
         <picture>
           <source srcSet={selectedAvatarWebp} type="image/webp" />
           <img

@@ -10,6 +10,7 @@ import { ISearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchBriefResults from "@/components/header/SearchBriefResults";
 import { getSearchResults } from "@/services/apiSearch";
+import { NAV_LINKS_OTHER } from "@/lib/navLinks";
 
 // Initiating controller for fetch function
 let controller: AbortController | null = null;
@@ -83,7 +84,9 @@ function Search() {
     if (!inputText.trim()) return; // Guard clause
     setIsSubmitting(true); // Enabling submitting state
     controller?.abort(); // Cancel the running fetch from
-    navigate(`/search?q=${encodeURIComponent(inputText)}`); // Redirecting user to search page
+    navigate(
+      `${NAV_LINKS_OTHER.search.path}?q=${encodeURIComponent(inputText)}`,
+    ); // Redirecting user to search page
     isMenuOpen && closeMenu();
     clearSearch(); // Reset the search component
     setIsSubmitting(false); // Disabling submitting state

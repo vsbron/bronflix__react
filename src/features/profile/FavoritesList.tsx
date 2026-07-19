@@ -1,11 +1,13 @@
-import { useUser } from "@/redux/reducers/userReducer";
+import { Link } from "react-router-dom";
 
+import { useUser } from "@/redux/reducers/userReducer";
 import Heading from "@/components/ui/Heading";
 import Previews from "@/components/previews/Previews";
 import { useMoviesList } from "@/features/profile/useMoviesList";
 import { useShowsList } from "@/features/profile/useShowsList";
 import { usePeopleList } from "@/features/profile/usePeopleList";
-import { Link } from "react-router-dom";
+
+import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function FavoritesList() {
   // Getting the user's favorites from the Redux store
@@ -37,7 +39,8 @@ function FavoritesList() {
           {likedMovies.length === 0 ? (
             <p>
               You haven't liked any movies yet. Head over to our{" "}
-              <Link to="/movies">movies</Link> section to start adding some.
+              <Link to={NAV_LINKS_MAIN.movies.path}>movies</Link> section to
+              start adding some.
             </p>
           ) : (
             <>
@@ -59,7 +62,8 @@ function FavoritesList() {
           {likedShows.length === 0 ? (
             <p>
               You haven't liked any shows yet. Head over to our{" "}
-              <Link to="/shows">shows</Link> section to start adding some.
+              <Link to={NAV_LINKS_MAIN.shows.path}>shows</Link> section to start
+              adding some.
             </p>
           ) : (
             <>

@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function ProceedOptions() {
   // Getting the navigate function from the hook
@@ -17,7 +18,7 @@ function ProceedOptions() {
           ;
         </li>
         <li>
-          Go back to the <Link to="/">homepage</Link>;
+          Go back to the <Link to={NAV_LINKS_MAIN.home.path}>homepage</Link>;
         </li>
       </ul>
       And continue exploring our collection.

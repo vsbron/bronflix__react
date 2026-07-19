@@ -15,6 +15,7 @@ import {
 } from "@/components/Forms/FormElements";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import { NAV_LINKS_OTHER } from "@/lib/navLinks";
 
 function ContactForm() {
   // Setting the state for the current form status
@@ -39,11 +40,11 @@ function ContactForm() {
         import.meta.env.VITE_EMAILJS_CONTACT_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID,
         "#contact-form",
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_PUBLIC_KEY,
       )
       .then(
-        () => navigate("/success"), // Redirect user to success page
-        () => navigate("/error-form") // Redirect user to error page
+        () => navigate(`${NAV_LINKS_OTHER.success.path}`), // Redirect user to success page
+        () => navigate(`${NAV_LINKS_OTHER.errorForm.path}`), // Redirect user to error page
       )
       .finally(() => setIsSubmitting(false)); // Re-enable inputs if needed
   };

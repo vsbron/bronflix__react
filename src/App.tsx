@@ -18,6 +18,11 @@ import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
 import ErrorMedia from "@/components/errorBoundary/ErrorMedia";
 import Layout from "@/components/ui/Layout";
 import Loader from "@/components/ui/Loader";
+import {
+  NAV_LINKS_OTHER,
+  NAV_LINKS_MAIN,
+  NAV_LINKS_SECONDARY,
+} from "./lib/navLinks";
 
 const Home = lazy(() => import("@/pages/Home"));
 const MoviesMain = lazy(() => import("@/pages/MoviesMain"));
@@ -59,19 +64,19 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       {
-        path: "/movies/:movieId",
+        path: `${NAV_LINKS_MAIN.movies.path}/:movieId`,
         element: <Movie />,
         loader: movieLoader,
         errorElement: <ErrorMedia type="movie" />,
       },
       {
-        path: "/movies/collection/:collectionId",
+        path: `${NAV_LINKS_MAIN.movies.path}/collection/:collectionId`,
         element: <MovieCollection />,
         loader: movieCollectionLoader,
         errorElement: <ErrorMedia type="collection" />,
       },
       {
-        path: "/shows/:showId",
+        path: `${NAV_LINKS_MAIN.shows.path}/:showId`,
         element: <Show />,
         loader: showLoader,
         shouldRevalidate: ({ currentUrl, nextUrl }) =>
@@ -79,30 +84,36 @@ const router = createBrowserRouter([
         errorElement: <ErrorMedia type="show" />,
       },
       {
-        path: "/person/:personId",
+        path: `${NAV_LINKS_OTHER.person.path}/:personId`,
         element: <Person />,
         loader: personLoader,
         errorElement: <ErrorMedia type="person" />,
       },
       {
-        path: "/profile",
+        path: `${NAV_LINKS_OTHER.profile.path}`,
         element: <ProtectedRoute />,
         children: [{ index: true, element: <Profile /> }],
       },
-      { path: "/movies", element: <MoviesMain /> },
-      { path: "/movies/genre/:genreId", element: <MoviesByGenre /> },
-      { path: "/shows", element: <ShowsMain /> },
-      { path: "/shows/genre/:genreId", element: <ShowsByGenre /> },
-      { path: "/ai-mode", element: <AIMode /> },
-      { path: "/search", element: <SearchResults /> },
-      { path: "/site-map", element: <Sitemap /> },
-      { path: "/about-us", element: <AboutUs /> },
-      { path: "/app-info", element: <AppInfo /> },
-      { path: "/contact-us", element: <ContactUs /> },
-      { path: "/privacy", element: <Privacy /> },
-      { path: "/terms", element: <TermsOfUse /> },
-      { path: "/success", element: <Success /> },
-      { path: "/error-form", element: <ErrorForm /> },
+      { path: `${NAV_LINKS_MAIN.movies.path}`, element: <MoviesMain /> },
+      {
+        path: `${NAV_LINKS_MAIN.movies.path}/genre/:genreId`,
+        element: <MoviesByGenre />,
+      },
+      { path: `${NAV_LINKS_MAIN.shows.path}`, element: <ShowsMain /> },
+      {
+        path: `${NAV_LINKS_MAIN.shows.path}/genre/:genreId`,
+        element: <ShowsByGenre />,
+      },
+      { path: `${NAV_LINKS_MAIN.aiMode.path}`, element: <AIMode /> },
+      { path: `${NAV_LINKS_OTHER.search.path}`, element: <SearchResults /> },
+      { path: `${NAV_LINKS_SECONDARY.siteMap.path}`, element: <Sitemap /> },
+      { path: `${NAV_LINKS_MAIN.about.path}`, element: <AboutUs /> },
+      { path: `${NAV_LINKS_SECONDARY.appInfo.path}`, element: <AppInfo /> },
+      { path: `${NAV_LINKS_SECONDARY.contactUs.path}`, element: <ContactUs /> },
+      { path: `${NAV_LINKS_SECONDARY.privacy.path}`, element: <Privacy /> },
+      { path: `${NAV_LINKS_SECONDARY.terms.path}`, element: <TermsOfUse /> },
+      { path: `${NAV_LINKS_OTHER.success.path}`, element: <Success /> },
+      { path: `${NAV_LINKS_OTHER.errorForm.path}`, element: <ErrorForm /> },
       { path: "/*", element: <NotFound /> },
     ],
   },

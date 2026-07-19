@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
 import { useUser } from "@/redux/reducers/userReducer";
-
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+
+import { NAV_LINKS_OTHER, NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function ExploreMore() {
   // Getting the id from user store
@@ -40,23 +41,35 @@ function ExploreMore() {
       </div>
       <div className="flex gap-8 mt-8 mb-1">
         <Button>
-          <Link className="inline-block py-3 px-6" to="/movies">
+          <Link
+            className="inline-block py-3 px-6"
+            to={NAV_LINKS_MAIN.movies.path}
+          >
             MOVIES
           </Link>
         </Button>
         <Button>
-          <Link className="inline-block py-3 px-6" to="/shows">
+          <Link
+            className="inline-block py-3 px-6"
+            to={NAV_LINKS_MAIN.shows.path}
+          >
             SERIES
           </Link>
         </Button>
         <Button>
-          <Link className="inline-block py-3 px-6" to="/ai-mode">
+          <Link
+            className="inline-block py-3 px-6"
+            to={NAV_LINKS_MAIN.aiMode.path}
+          >
             AI MODE
           </Link>
         </Button>
         {uid && (
           <Button>
-            <Link className="inline-block py-3 px-6" to="/profile">
+            <Link
+              className="inline-block py-3 px-6"
+              to={NAV_LINKS_OTHER.profile.path}
+            >
               PROFILE
             </Link>
           </Button>

@@ -5,6 +5,7 @@ import { MEDIA_IMG_URL } from "@/lib/constants";
 import { MovieCollectionLinkProps } from "@/lib/types";
 
 import { BlackGradientToTop } from "@/components/ui/Overlays";
+import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function MovieCollectionLink({ collection }: MovieCollectionLinkProps) {
   // Setting the cover image for the collection link
@@ -21,7 +22,7 @@ function MovieCollectionLink({ collection }: MovieCollectionLinkProps) {
         Check out the related movies from
       </div>
       <Link
-        to={`/movies/collection/${collection.id}`}
+        to={`${NAV_LINKS_MAIN.movies.path}/collection/${collection.id}`}
         style={{ backgroundImage: coverImg }}
         className="max-w-[40rem] md:min-w-[25rem] relative bg-center bg-cover bg-no-repeat rounded-xl flex justify-center overflow-hidden hover:scale-95 transition-transform border-red-900 border-2"
       >

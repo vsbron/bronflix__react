@@ -19,3 +19,11 @@ export const NAV_LINKS_SECONDARY: Record<string, NavLink> = {
   privacy: { path: "/privacy", label: "Privacy Policy" },
   siteMap: { path: "/site-map", label: "Site Map" },
 } as const;
+
+export const NAV_LINKS_OTHER: Record<string, NavLink> = {
+  profile: { path: "/profile", label: "Profile" },
+  person: { path: "/person", label: "Person" },
+  search: { path: "/search", label: "Search" },
+  success: { path: "/success", label: "Success" },
+  errorForm: { path: "/error-form", label: "Error Form" },
+} as const;

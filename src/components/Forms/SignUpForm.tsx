@@ -20,6 +20,7 @@ import {
   FormGroup,
   FormLabelError,
 } from "@/components/Forms/FormElements";
+import { NAV_LINKS_OTHER } from "@/lib/navLinks";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -49,7 +50,7 @@ function SignUpForm() {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         data.email,
-        data.password
+        data.password,
       );
 
       // Creating new user object
@@ -77,7 +78,7 @@ function SignUpForm() {
       dispatch(setUserData(newUser));
 
       // Redirect after successful sign-up
-      navigate("/profile");
+      navigate(`${NAV_LINKS_OTHER.profile.path}`);
     } catch (e: unknown) {
       // Rollback and sign out
       if (auth.currentUser) {

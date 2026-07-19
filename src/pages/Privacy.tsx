@@ -7,6 +7,7 @@ import { META_PRIVACY_DESC, META_PRIVACY_TITLE } from "@/lib/metaTags";
 import AnchorTarget from "@/components/ui/AnchorTarget";
 import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
+import { NAV_LINKS_SECONDARY } from "@/lib/navLinks";
 
 function Privacy() {
   // Returned JSX
@@ -217,7 +218,9 @@ function Privacy() {
               <a href={`mailto:${INFO_EMAIL}`}>{INFO_EMAIL}</a>
             </li>
             <li>
-              Or use our <Link to="/contact-us">Contact Us</Link> page
+              Or use our{" "}
+              <Link to={NAV_LINKS_SECONDARY.contactUs.path}>Contact Us</Link>{" "}
+              page
             </li>
           </ul>
         </ContentWall>

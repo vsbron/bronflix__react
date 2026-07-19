@@ -13,7 +13,11 @@ import Authentication from "@/components/header/Authentication";
 import Search from "@/components/header/Search";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
-import { NAV_LINKS_MAIN } from "@/lib/navLinks";
+import {
+  NAV_LINKS_OTHER,
+  NAV_LINKS_MAIN,
+  NAV_LINKS_SECONDARY,
+} from "@/lib/navLinks";
 
 function MobileNav() {
   // Getting the user id
@@ -59,7 +63,7 @@ function MobileNav() {
               <NavLink to={path}>{label}</NavLink>
             </li>     
           )}
-          <li><NavLink to="/contact-us">Contact Us</NavLink></li>
+          <li><NavLink to={NAV_LINKS_SECONDARY.contactUs.path}>Contact Us</NavLink></li>
         </ul>
       </div>
 
@@ -68,7 +72,7 @@ function MobileNav() {
         <Heading as="h2">User</Heading>
         <div className={`flex flex-col gap-4 items-start`}>
           {uid ? <>
-            <Button onClick={closeMenu}><NavLink to="/profile">Profile</NavLink></Button>
+            <Button onClick={closeMenu}><NavLink to={NAV_LINKS_OTHER.profile.path}>Profile</NavLink></Button>
             <Button onClick={handleSignOut} label="Sign out"><span>Sign Out</span></Button>
           </> : <Authentication col={true} />}
         </div>
