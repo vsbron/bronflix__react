@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import * as OutlineIcons from "@heroicons/react/24/outline";
-import { UserIcon } from "@heroicons/react/24/outline";
 
 import { useUser } from "@/redux/reducers/userReducer";
 
@@ -14,18 +13,20 @@ function Nav() {
   // Returned JSX
   return (
     <nav className="flex flex-col gap-16 my-auto">
-      {Object.values(NAV_LINKS_MAIN).map(({ path, label, icon }) => {
-        if (!icon) return null;
-        const Icon = OutlineIcons[icon as keyof typeof OutlineIcons];
-        return (
-          <Link key={path} to={path}>
-            <NavItem icon={<Icon />} title={label} />
-          </Link>
-        );
-      })}
+      {Object.values(NAV_LINKS_MAIN).map(
+        ({ path, label, icon }) =>
+          icon && (
+            <Link key={path} to={path}>
+              <NavItem icon={icon} title={label} />
+            </Link>
+          ),
+      )}
       {uid && (
         <Link to={NAV_LINKS_OTHER.profile.path}>
-          <NavItem icon={<UserIcon />} title="Profile" />
+          <NavItem
+            icon={NAV_LINKS_OTHER.profile.icon}
+            title={NAV_LINKS_OTHER.profile.label}
+          />
         </Link>
       )}
     </nav>
@@ -36,10 +37,15 @@ export default Nav;
 
 // Link Item element
 function NavItem({ icon, title }: NavItemProps) {
+  // Resolving the icon component from its name
+  const Icon = OutlineIcons[icon as keyof typeof OutlineIcons];
+
   // Returned JSX
   return (
     <div className="flex gap-6 whitespace-nowrap items-center text-stone-50 hover:text-red-500 transition-colors duration-200">
-      <span className="block basis-[2.5rem] flex-shrink-0">{icon}</span>
+      <span className="block basis-[2.5rem] flex-shrink-0">
+        <Icon />
+      </span>
       <span className="sidebar__nav-title">{title}</span>
     </div>
   );

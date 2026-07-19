@@ -21,7 +21,7 @@ export const NAV_LINKS_SECONDARY: Record<string, NavLink> = {
 } as const;
 
 export const NAV_LINKS_OTHER: Record<string, NavLink> = {
-  profile: { path: "/profile", label: "Profile" },
+  profile: { path: "/profile", label: "Profile", icon: "UserIcon" },
   person: { path: "/person", label: "Person" },
   search: { path: "/search", label: "Search" },
   success: { path: "/success", label: "Success" },
