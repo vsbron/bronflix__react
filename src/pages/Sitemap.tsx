@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import { SITE_NAME } from "@/lib/constants";
-import { META_SITEMAP_DESC, META_SITEMAP_TITLE } from "@/lib/metaTags";
-
 import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
+
+import { SITE_NAME } from "@/lib/constants";
+import { META_SITEMAP_DESC, META_SITEMAP_TITLE } from "@/lib/metaTags";
 import { NAV_LINKS_MAIN, NAV_LINKS_SECONDARY } from "@/lib/navLinks";
 
 function Sitemap() {

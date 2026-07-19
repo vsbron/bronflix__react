@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
-import {
-  FilmIcon,
-  HomeIcon,
-  SparklesIcon,
-  TvIcon,
-  UserIcon,
-} from "@heroicons/react/24/outline";
+import * as OutlineIcons from "@heroicons/react/24/outline";
+import { UserIcon } from "@heroicons/react/24/outline";
 
 import { useUser } from "@/redux/reducers/userReducer";
 
 import { NavItemProps } from "@/lib/types";
+import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function Nav() {
   // Getting the id from user store
@@ -18,18 +14,14 @@ function Nav() {
   // Returned JSX
   return (
     <nav className="flex flex-col gap-16 my-auto">
-      <Link to="/">
-        <NavItem icon={<HomeIcon />} title="Home" />
-      </Link>
-      <Link to="/movies">
-        <NavItem icon={<FilmIcon />} title="Movies" />
-      </Link>
-      <Link to="/shows">
-        <NavItem icon={<TvIcon />} title="Shows" />
-      </Link>
-      <Link to="/ai-mode">
-        <NavItem icon={<SparklesIcon />} title="AI Mode" />
-      </Link>
+      {NAV_LINKS_MAIN.slice(0, -1).map(({ path, label, icon }) => {
+        const Icon = OutlineIcons[icon as keyof typeof OutlineIcons];
+        return (
+          <Link key={path} to={path}>
+            <NavItem icon={<Icon />} title={label} />
+          </Link>
+        );
+      })}
       {uid && (
         <Link to="/profile">
           <NavItem icon={<UserIcon />} title="Profile" />

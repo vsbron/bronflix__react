@@ -13,6 +13,7 @@ import Authentication from "@/components/header/Authentication";
 import Search from "@/components/header/Search";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import { NAV_LINKS_MAIN } from "@/lib/navLinks";
 
 function MobileNav() {
   // Getting the user id
@@ -53,11 +54,11 @@ function MobileNav() {
       <div className={`transition-all duration-500 w-full my-4 ${isMenuOpen ? "translate-y-0 delay-200 opacity-1" : "translate-y-60 delay-0 opacity-0"}`}>
         <Heading as="h2">Navigation</Heading>
         <ul className="m-0 flex flex-col gap-1.5 text-[1.7rem]" onClick={closeMenu}>
-          <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/movies">Movies</NavLink></li>
-          <li><NavLink to="/shows">Shows</NavLink></li>
-          <li><NavLink to="/ai-mode">AI Mode</NavLink></li>
-          <li><NavLink to="/about-us">About Us</NavLink></li>
+          {NAV_LINKS_MAIN.map((link) => (
+            <li>
+              <NavLink to={link.path}>{link.label}</NavLink>
+            </li>
+          ))}
           <li><NavLink to="/contact-us">Contact Us</NavLink></li>
         </ul>
       </div>
@@ -67,9 +68,9 @@ function MobileNav() {
         <Heading as="h2">User</Heading>
         <div className={`flex flex-col gap-4 items-start`}>
           {uid ? <>
-              <Button onClick={closeMenu}><NavLink to="/profile">Profile</NavLink></Button>
-              <Button onClick={handleSignOut} label="Sign out"><span>Sign Out</span></Button>
-            </> : <Authentication col={true} />}
+            <Button onClick={closeMenu}><NavLink to="/profile">Profile</NavLink></Button>
+            <Button onClick={handleSignOut} label="Sign out"><span>Sign Out</span></Button>
+          </> : <Authentication col={true} />}
         </div>
       </div>
 

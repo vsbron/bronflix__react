@@ -1,9 +1,9 @@
 export const NAV_LINKS_MAIN = [
-  { path: "/", label: "Home" },
-  { path: "/movies", label: "Movies" },
-  { path: "/shows", label: "Shows" },
-  { path: "/ai-mode", label: "AI Mode" },
-  { path: "/about-us", label: "About Us" },
+  { path: "/", label: "Home", icon: "HomeIcon" },
+  { path: "/movies", label: "Movies", icon: "FilmIcon" },
+  { path: "/shows", label: "Shows", icon: "TvIcon" },
+  { path: "/ai-mode", label: "AI Mode", icon: "SparklesIcon" },
+  { path: "/about-us", label: "About Us", icon: "SparklesIcon" },
 ] as const;
 
 export const NAV_LINKS_SECONDARY = [
