@@ -19,10 +19,10 @@ function FooterNav() {
             <Link to="/shows">Shows</Link>
           </li>
           <li>
-            <Link to="/about-us">About Us</Link>
+            <Link to="/ai-mode">AI Mode</Link>
           </li>
           <li>
-            <Link to="/site-map">Site Map</Link>
+            <Link to="/about-us">About Us</Link>
           </li>
         </ul>
         <ul className="basis-[40%] m-0 flex flex-col gap-1">
@@ -37,6 +37,9 @@ function FooterNav() {
           </li>
           <li>
             <Link to="/privacy">Privacy Policy</Link>
+          </li>
+          <li>
+            <Link to="/site-map">Site Map</Link>
           </li>
         </ul>
       </div>

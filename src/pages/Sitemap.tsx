@@ -53,10 +53,10 @@ function Sitemap() {
                   <Link to="/shows">Shows</Link>
                 </li>
                 <li>
-                  <Link to="/about-us">About Us</Link>
+                  <Link to="/ai-mode">AI Mode</Link>
                 </li>
                 <li>
-                  <Link to="/site-map">Site Map</Link>
+                  <Link to="/about-us">About Us</Link>
                 </li>
               </ul>
             </div>
@@ -74,6 +74,9 @@ function Sitemap() {
                 </li>
                 <li>
                   <Link to="/privacy">Privacy Policy</Link>
+                </li>
+                <li>
+                  <Link to="/site-map">Site Map</Link>
                 </li>
               </ul>
             </div>

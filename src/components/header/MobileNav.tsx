@@ -5,7 +5,7 @@ import { signOut } from "firebase/auth";
 
 import logo from "@/assets/bronflix-logo.svg";
 import { useMobileNav } from "@/context/MobileNavContext";
-import { BASE_GAP_CLASS, SITE_NAME } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
 import { clearUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
@@ -56,6 +56,7 @@ function MobileNav() {
           <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="/movies">Movies</NavLink></li>
           <li><NavLink to="/shows">Shows</NavLink></li>
+          <li><NavLink to="/ai-mode">AI Mode</NavLink></li>
           <li><NavLink to="/about-us">About Us</NavLink></li>
           <li><NavLink to="/contact-us">Contact Us</NavLink></li>
         </ul>

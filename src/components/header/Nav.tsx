@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import {
   FilmIcon,
   HomeIcon,
+  SparklesIcon,
   TvIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
@@ -25,6 +26,9 @@ function Nav() {
       </Link>
       <Link to="/shows">
         <NavItem icon={<TvIcon />} title="Shows" />
+      </Link>
+      <Link to="/ai-mode">
+        <NavItem icon={<SparklesIcon />} title="AI Mode" />
       </Link>
       {uid && (
         <Link to="/profile">
