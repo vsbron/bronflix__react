@@ -59,7 +59,7 @@ function MobileNav() {
         <Heading as="h2">Navigation</Heading>
         <ul className="m-0 flex flex-col gap-1.5 text-[1.7rem]" onClick={closeMenu}>
           {Object.values(NAV_LINKS_MAIN).map(({ path, label }) => 
-            <li>
+            <li key={path}>
               <NavLink to={path}>{label}</NavLink>
             </li>     
           )}
