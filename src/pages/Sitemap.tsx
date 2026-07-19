@@ -6,6 +6,7 @@ import { META_SITEMAP_DESC, META_SITEMAP_TITLE } from "@/lib/metaTags";
 
 import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
+import { NAV_LINKS_MAIN, NAV_LINKS_SECONDARY } from "@/lib/navLinks";
 
 function Sitemap() {
   // Returned JSX
@@ -43,41 +44,21 @@ function Sitemap() {
             <div>
               <h4>Main pages</h4>
               <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/movies">Movies</Link>
-                </li>
-                <li>
-                  <Link to="/shows">Shows</Link>
-                </li>
-                <li>
-                  <Link to="/ai-mode">AI Mode</Link>
-                </li>
-                <li>
-                  <Link to="/about-us">About Us</Link>
-                </li>
+                {NAV_LINKS_MAIN.map((link) => (
+                  <li>
+                    <Link to={link.path}>{link.label}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
               <h4>Additional pages</h4>
               <ul>
-                <li>
-                  <Link to="/app-info">App Info</Link>
-                </li>
-                <li>
-                  <Link to="/contact-us">Contact Us</Link>
-                </li>
-                <li>
-                  <Link to="/terms">Terms Of Use</Link>
-                </li>
-                <li>
-                  <Link to="/privacy">Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link to="/site-map">Site Map</Link>
-                </li>
+                {NAV_LINKS_SECONDARY.map((link) => (
+                  <li>
+                    <Link to={link.path}>{link.label}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
