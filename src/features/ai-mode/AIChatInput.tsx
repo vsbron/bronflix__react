@@ -27,7 +27,7 @@ function AIChatInput({ onSend }: AIChatInputProps) {
 
   // Returned JSX
   return (
-    <div className="flex justify-end gap-6 items-center">
+    <div className="flex flex-col items-end">
       <form
         className="flex gap-4 max-md:flex-row-reverse max-md:w-full relative w-full justify-end"
         onSubmit={(e) => handleAI(e)}
@@ -43,6 +43,9 @@ function AIChatInput({ onSend }: AIChatInputProps) {
           <span>Ask AI</span>
         </Button>
       </form>
+      <div className="text-stone-500 text-[1.3rem] mt-2">
+        AI can make mistakes. Double-check important info.
+      </div>
     </div>
   );
 }
