@@ -129,7 +129,7 @@ export type ContentWallProps = { children: ReactNode };
 export type FooterHeadingProps = { children: string };
 export type HeadingProps = { children: string; as?: Headings; id?: string };
 export type MediaButtonsProps = { type: "movie" | "tv"; media: IBase };
-export type NavItemProps = { icon: ReactNode; title: string };
+export type NavItemProps = { icon?: string; title: string };
 export type SeparatorProps = { className?: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 

@@ -38,13 +38,13 @@ export default Nav;
 // Link Item element
 function NavItem({ icon, title }: NavItemProps) {
   // Resolving the icon component from its name
-  const Icon = OutlineIcons[icon as keyof typeof OutlineIcons];
+  const Icon = icon ? OutlineIcons[icon as keyof typeof OutlineIcons] : null;
 
   // Returned JSX
   return (
     <div className="flex gap-6 whitespace-nowrap items-center text-stone-50 hover:text-red-500 transition-colors duration-200">
       <span className="block basis-[2.5rem] flex-shrink-0">
-        <Icon />
+        {Icon && <Icon />}
       </span>
       <span className="sidebar__nav-title">{title}</span>
     </div>
