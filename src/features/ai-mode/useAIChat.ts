@@ -11,11 +11,12 @@ const WELCOME_MESSAGE: AIMessage = {
 };
 
 export function useAIChat() {
-  // Setting the chat history state, initializing from sessionStorage if present
+  // Setting the chat history state, initializing from sessionStorage if present and loading state
   const [messages, setMessages] = useState<AIMessage[]>(() => {
     const stored = sessionStorage.getItem(AI_CHAT_STORAGE_KEY);
     return stored ? JSON.parse(stored) : [WELCOME_MESSAGE];
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   // Saving history in storage with each new message
   useEffect(() => {
@@ -32,6 +33,7 @@ export function useAIChat() {
 
     // Update the messages state
     setMessages(updatedMessages);
+    setIsLoading(true);
 
     try {
       // Sending only the last messages, excluding the hardcoded welcome message
@@ -49,11 +51,13 @@ export function useAIChat() {
       setMessages((prev) => [...prev, { role: "ai", text: formattedText }]);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   // Return the state and handler
-  return { messages, handleSend };
+  return { messages, handleSend, isLoading };
 }
 
 // Fix for links in the AI response

@@ -3,14 +3,16 @@ import { useEffect, useRef } from "react";
 import AIChatMessage from "@/features/ai-mode/AIChatMessage";
 
 import { AIMessage } from "@/lib/types";
+import TypingIndicator from "./AITyping";
 
 // Prop type
 type AIChatProps = {
   messages: AIMessage[];
+  isLoading: boolean;
 };
 
 // The component
-function AIChat({ messages }: AIChatProps) {
+function AIChat({ messages, isLoading }: AIChatProps) {
   // Create a reference for focusing
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -33,6 +35,7 @@ function AIChat({ messages }: AIChatProps) {
           {msg.text}
         </AIChatMessage>
       ))}
+      {isLoading && <TypingIndicator />}
     </div>
   );
 }

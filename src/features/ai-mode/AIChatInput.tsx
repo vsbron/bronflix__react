@@ -5,10 +5,11 @@ import Button from "@/components/ui/Button";
 // Prop type
 type AIChatInputProps = {
   onSend: (message: string) => void;
+  isLoading: boolean;
 };
 
 // The component
-function AIChatInput({ onSend }: AIChatInputProps) {
+function AIChatInput({ onSend, isLoading }: AIChatInputProps) {
   // Create state value for controlled input value
   const [value, setValue] = useState("");
 
@@ -39,7 +40,7 @@ function AIChatInput({ onSend }: AIChatInputProps) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <Button type="submit">
+        <Button type="submit" disabled={isLoading}>
           <span>Ask AI</span>
         </Button>
       </form>

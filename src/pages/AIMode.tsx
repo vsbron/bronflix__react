@@ -8,8 +8,8 @@ import { useAIChat } from "@/features/ai-mode/useAIChat";
 import { META_AI_DESC, META_AI_TITLE } from "@/lib/metaTags";
 
 function AIMode() {
-  // Get the messages and message handler from custom hook
-  const { messages, handleSend } = useAIChat();
+  // Get the messages, message handler from custom hook and loader
+  const { messages, handleSend, isLoading } = useAIChat();
 
   // Returned JSX
   return (
@@ -24,8 +24,8 @@ function AIMode() {
       <section className="h-[100%] flex flex-col">
         <Heading>AI Mode</Heading>
         <div className="flex flex-col gap-8 h-[100%]">
-          <AIChat messages={messages} />
-          <AIChatInput onSend={handleSend} />
+          <AIChat messages={messages} isLoading={isLoading} />
+          <AIChatInput onSend={handleSend} isLoading={isLoading} />
         </div>
       </section>
     </>
