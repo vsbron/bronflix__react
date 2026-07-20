@@ -42,8 +42,11 @@ export function useAIChat() {
       // Fetching the AI response
       const aiText = await getAIResponse(historyToSend);
 
+      // Format text for BroNflix UI
+      const formattedText = convertLinks(aiText);
+
       // Add AI response to the history
-      setMessages((prev) => [...prev, { role: "ai", text: aiText }]);
+      setMessages((prev) => [...prev, { role: "ai", text: formattedText }]);
     } catch (error) {
       console.error(error);
     }
@@ -51,4 +54,12 @@ export function useAIChat() {
 
   // Return the state and handler
   return { messages, handleSend };
+}
+
+// Fix for links in the AI response
+function convertLinks(text: string): string {
+  return text.replace(
+    /\*\*(.+?):\*\*([^\n]*?)\s*(https?:\/\/vsbronflix\.netlify\.app\/\S+)/g,
+    (_match, title, desc, url) => `**[${title}](${url}):**${desc}`,
+  );
 }
