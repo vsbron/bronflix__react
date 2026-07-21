@@ -7,7 +7,7 @@ import logo from "@/assets/bronflix-logo.svg";
 function Logo() {
   // Returned JSX
   return (
-    <Link to={NAV_LINKS_MAIN.movies.path}>
+    <Link to={NAV_LINKS_MAIN.home.path}>
       <img
         src={logo}
         width="35"

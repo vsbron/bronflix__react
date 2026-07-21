@@ -11,7 +11,7 @@ function LogoFull() {
 
   // Returned JSX
   return (
-    <Link to={NAV_LINKS_MAIN.movies.path} onClick={closeMenu}>
+    <Link to={NAV_LINKS_MAIN.home.path} onClick={closeMenu}>
       <img
         src={logoFull}
         width="138"
