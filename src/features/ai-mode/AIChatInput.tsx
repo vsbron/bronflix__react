@@ -30,7 +30,7 @@ function AIChatInput({ onSend, isLoading }: AIChatInputProps) {
   return (
     <div className="flex flex-col items-end">
       <form
-        className="flex gap-4 max-md:flex-row-reverse max-md:w-full relative w-full justify-end"
+        className="flex gap-4 relative w-full justify-end"
         onSubmit={(e) => handleAI(e)}
       >
         <input

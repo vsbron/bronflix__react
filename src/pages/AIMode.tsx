@@ -23,7 +23,7 @@ function AIMode() {
       {/* CONTENT */}
       <section className="h-[100%] flex flex-col">
         <Heading>AI Mode</Heading>
-        <div className="flex flex-col gap-8 h-[100%]">
+        <div className="flex flex-col gap-8 h-[calc(100vh-135px)] md:h-[calc(100vh-100px)]">
           <AIChat messages={messages} isLoading={isLoading} />
           <AIChatInput onSend={handleSend} isLoading={isLoading} />
         </div>

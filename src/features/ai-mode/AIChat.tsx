@@ -28,7 +28,7 @@ function AIChat({ messages, isLoading }: AIChatProps) {
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col items-start gap-8 h-[600px] border border-main-color rounded-lg p-10 overflow-y-scroll"
+      className="flex flex-col items-start gap-4 md:gap-8 h-full border border-main-color rounded-lg p-10 overflow-y-scroll"
     >
       {messages.map((msg, i) => (
         <AIChatMessage key={i} userMessage={msg.role === "user"}>
