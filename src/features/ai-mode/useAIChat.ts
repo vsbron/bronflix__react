@@ -7,7 +7,7 @@ import { AIMessage } from "@/lib/types";
 // Setting first message
 const WELCOME_MESSAGE: AIMessage = {
   role: "ai",
-  text: "Welcome,\nHow can I help you?",
+  text: "Welcome to the AI Mode of BroNflix! How can I help you?",
 };
 
 export function useAIChat() {
