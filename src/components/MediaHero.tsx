@@ -16,7 +16,7 @@ function MediaHero({ media, small = false, children }: MediaHeroPros) {
   let basicWidth, smallWidth;
   switch (true) {
     case isXS:
-      basicWidth = "100%";
+      basicWidth = "75%";
       smallWidth = "25rem";
       break;
     case isSM:
@@ -43,7 +43,7 @@ function MediaHero({ media, small = false, children }: MediaHeroPros) {
     >
       <img
         src={posterPath}
-        className="rounded-lg max-sm:object-contain"
+        className="rounded-lg max-sm:mx-auto max-sm:object-contain"
         style={{ width: small ? smallWidth : basicWidth }}
         alt={media.title || media.name}
         title={`${media.title || media.name} poster`}
