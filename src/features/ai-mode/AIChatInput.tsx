@@ -27,6 +27,11 @@ function AIChatInput({ onSend, isLoading, onClear }: AIChatInputProps) {
     setValue("");
   };
 
+  // Clear chat handler
+  const handleClear = () => {
+    window.confirm("Clear chat history?") && onClear();
+  };
+
   // Returned JSX
   return (
     <div className="flex flex-col xs:items-end">
@@ -51,7 +56,7 @@ function AIChatInput({ onSend, isLoading, onClear }: AIChatInputProps) {
           (
           <button
             type="button"
-            onClick={onClear}
+            onClick={handleClear}
             className="underline hover:text-stone-50 transition-colors duration-200"
           >
             Clear chat
