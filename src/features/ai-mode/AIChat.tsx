@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 
 import AIChatMessage from "@/features/ai-mode/AIChatMessage";
+import TypingIndicator from "@/features/ai-mode/AITyping";
 
 import { AIMessage } from "@/lib/types";
-import TypingIndicator from "./AITyping";
 
 // Prop type
 type AIChatProps = {
@@ -35,6 +35,7 @@ function AIChat({ messages, isLoading }: AIChatProps) {
           {msg.text}
         </AIChatMessage>
       ))}
+
       {isLoading && <TypingIndicator />}
     </div>
   );

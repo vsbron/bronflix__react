@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 type AIChatMessageProps = {
   children: React.ReactNode;
   userMessage?: boolean;
+  raw?: boolean;
 };
 
 // Common CSS for pseudo elements
@@ -11,7 +12,11 @@ const afterClass =
   "after:absolute after:-bottom-[9px] after:h-0 after:w-0 after:border-b-[10px] after:border-b-transparent after:content-['']";
 
 // The component
-function AIChatMessage({ children, userMessage = false }: AIChatMessageProps) {
+function AIChatMessage({
+  children,
+  userMessage = false,
+  raw = false,
+}: AIChatMessageProps) {
   // Returned JSX
   return (
     <div
@@ -25,7 +30,7 @@ function AIChatMessage({ children, userMessage = false }: AIChatMessageProps) {
             : "bg-stone-800 rounded-bl-none after:left-0 after:border-l-[10px] after:border-l-stone-800"
         }`}
       >
-        {userMessage ? (
+        {userMessage || raw ? (
           children
         ) : (
           <div className="[&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
