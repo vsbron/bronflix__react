@@ -29,7 +29,7 @@ function AIChatInput({ onSend, isLoading, onClear }: AIChatInputProps) {
 
   // Returned JSX
   return (
-    <div className="flex flex-col items-end">
+    <div className="flex flex-col xs:items-end">
       <form
         className="flex gap-4 relative w-full justify-end"
         onSubmit={(e) => handleAI(e)}
@@ -46,15 +46,18 @@ function AIChatInput({ onSend, isLoading, onClear }: AIChatInputProps) {
         </Button>
       </form>
       <div className="text-stone-500 text-[1.3rem] mt-2">
-        AI can make mistakes. Double-check important info. (
-        <button
-          type="button"
-          onClick={onClear}
-          className="cursor-pointer hover:text-stone-50 transition-colors duration-200"
-        >
-          Clear chat
-        </button>
-        )
+        AI can make mistakes. Double-check important info.{" "}
+        <span className="block xs:inline-block">
+          (
+          <button
+            type="button"
+            onClick={onClear}
+            className="underline hover:text-stone-50 transition-colors duration-200"
+          >
+            Clear chat
+          </button>
+          )
+        </span>
       </div>
     </div>
   );
