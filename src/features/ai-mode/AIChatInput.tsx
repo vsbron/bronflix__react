@@ -50,7 +50,7 @@ function AIChatInput({ onSend, isLoading, onClear }: AIChatInputProps) {
           <span>Ask AI</span>
         </Button>
       </form>
-      <div className="text-stone-500 text-[1.3rem] mt-2">
+      <div className="text-stone-500 text-[1.3rem] leading-snug mt-2">
         AI can make mistakes. Double-check important info.{" "}
         <span className="block xs:inline-block">
           (
