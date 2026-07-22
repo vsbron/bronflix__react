@@ -6,10 +6,11 @@ import Button from "@/components/ui/Button";
 type AIChatInputProps = {
   onSend: (message: string) => void;
   isLoading: boolean;
+  onClear: () => void;
 };
 
 // The component
-function AIChatInput({ onSend, isLoading }: AIChatInputProps) {
+function AIChatInput({ onSend, isLoading, onClear }: AIChatInputProps) {
   // Create state value for controlled input value
   const [value, setValue] = useState("");
 
@@ -45,7 +46,15 @@ function AIChatInput({ onSend, isLoading }: AIChatInputProps) {
         </Button>
       </form>
       <div className="text-stone-500 text-[1.3rem] mt-2">
-        AI can make mistakes. Double-check important info.
+        AI can make mistakes. Double-check important info. (
+        <button
+          type="button"
+          onClick={onClear}
+          className="cursor-pointer hover:text-stone-50 transition-colors duration-200"
+        >
+          Clear chat
+        </button>
+        )
       </div>
     </div>
   );

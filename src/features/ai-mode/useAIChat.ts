@@ -23,6 +23,11 @@ export function useAIChat() {
     sessionStorage.setItem(AI_CHAT_STORAGE_KEY, JSON.stringify(messages));
   }, [messages]);
 
+  // Clear chat handler
+  const handleClear = () => {
+    setMessages([WELCOME_MESSAGE]);
+  };
+
   // Send handler
   const handleSend = async (userMessage: string) => {
     // Add user message to the current messages
@@ -57,7 +62,7 @@ export function useAIChat() {
   };
 
   // Return the state and handler
-  return { messages, handleSend, isLoading };
+  return { messages, handleSend, isLoading, handleClear };
 }
 
 // Fix for links in the AI response
