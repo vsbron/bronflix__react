@@ -110,8 +110,9 @@ Provides in-depth details about an actor or crew member:
 - A conversational interface where users can ask for movie, show, or actor recommendations in natural language.
 - Powered by Google's Gemini API through a serverless function, keeping the API key secure server-side.
 - Maintains short-term conversation context (last 10 messages) for natural back-and-forth follow-ups.
-- Chat history persists for the browser session via sessionStorage.
-- Responses are rendered with Markdown formatting for readable, structured recommendations.
+- Chat history persists for the browser session via sessionStorage, with an option to clear it manually.
+- Responses are rendered with Markdown formatting for readable, structured recommendations, including clickable links to relevant movie, show, and person pages.
+- A typing indicator shows while the AI is generating a response.
 
 ### **Profile Page**
 

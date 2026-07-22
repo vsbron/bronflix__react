@@ -255,12 +255,15 @@ function AppInfo() {
             natural back-and-forth follow-ups.
           </p>
           <p>
-            Chat history persists for the browser session via sessionStorage.
+            Chat history persists for the browser session via sessionStorage,
+            with an option to clear it manually.
           </p>
           <p>
             Responses are rendered with Markdown formatting for readable,
-            structured recommendations.
+            structured recommendations, including clickable links to relevant
+            movie, show, and person pages.
           </p>
+          <p>A typing indicator shows while the AI is generating a response.</p>
           <AnchorTarget id="profile-page" />
           <Heading as="h3">Profile Page</Heading>
           <p>
